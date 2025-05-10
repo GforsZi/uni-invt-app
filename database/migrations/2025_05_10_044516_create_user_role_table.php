@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('user_role', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('role_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->string('sys_note')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 

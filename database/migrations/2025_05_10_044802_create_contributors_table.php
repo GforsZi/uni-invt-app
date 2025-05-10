@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('contributors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();

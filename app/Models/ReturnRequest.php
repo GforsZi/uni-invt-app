@@ -7,15 +7,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ItemLog extends Model
+class ReturnRequest extends Model
 {
-    /** @use HasFactory<\Database\Factories\ItemLogFactory> */
+    /** @use HasFactory<\Database\Factories\ReturnReguestFactory> */
     use HasFactory, SoftDeletes, Blameable;
 
     protected $guarded = ['id', 'timestamps'];
 
-    public function item()
+    public function user()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(ReturningItem::class);
     }
 }

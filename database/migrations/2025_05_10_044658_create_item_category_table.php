@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('item_category', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('item_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('category_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->string('sys_note')->nullable();
+
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('category_items')->onDelete('cascade');
         });
     }
 

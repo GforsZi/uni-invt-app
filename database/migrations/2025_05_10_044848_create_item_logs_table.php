@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('item_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('item_id')->unsigned()->nullable();
+            $table->enum('type', ['increase', 'reduce']);
+            $table->integer('previous_amounted');
+            $table->integer('current_amounted');
+            $table->string('note')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();
@@ -23,6 +28,7 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 

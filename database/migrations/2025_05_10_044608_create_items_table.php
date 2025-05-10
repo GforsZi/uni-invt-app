@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('img_path')->nullable();
+            $table->integer('total')->default(0);
+            $table->integer('used')->default(0);
+            $table->integer('available')->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();

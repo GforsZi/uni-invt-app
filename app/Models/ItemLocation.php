@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LoanReguest extends Model
+class ItemLocation extends Model
 {
-    /** @use HasFactory<\Database\Factories\LoanReguestFactory> */
+    /** @use HasFactory<\Database\Factories\ItemLocationFactory> */
     use HasFactory;
 }

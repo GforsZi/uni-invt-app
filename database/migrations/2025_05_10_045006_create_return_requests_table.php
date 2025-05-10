@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contributor_records', function (Blueprint $table) {
+        Schema::create('return_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('contributor_id')->unsigned()->nullable();
-            $table->unsignedBigInteger('item_id')->unsigned()->nullable();
-            $table->integer('amount')->default(0);
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('loan_id')->unsigned()->nullable();
+            $table->integer('many_item');
+            $table->string('description')->nullable();
             $table->string('note')->nullable();
+            $table->boolean('accepted')->default(false);
+            $table->date('approved_at')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();
@@ -27,8 +30,8 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('contributor_id')->references('id')->on('contributors')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('loan_id')->references('id')->on('loan_requests')->onDelete('cascade');
         });
     }
 
@@ -37,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contributor_records');
+        Schema::dropIfExists('return_reguests');
     }
 };

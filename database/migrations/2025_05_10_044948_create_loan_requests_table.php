@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 return new class extends Migration
 {
@@ -11,8 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loan_reguests', function (Blueprint $table) {
+        Schema::create('loan_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->integer('many_item');
+            $table->string('description')->nullable();
+            $table->boolean('status')->default(true);
+            $table->date('loan_limit')->nullable();
+            $table->boolean('accepted')->default(false);
+            $table->date('approved_at')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();
@@ -23,6 +31,7 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('loaning_items', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('item_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('loan_id')->unsigned()->nullable();
+            $table->integer('many_item');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();
@@ -23,6 +26,8 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('loan_id')->references('id')->on('loan_requests')->onDelete('cascade');
         });
     }
 
