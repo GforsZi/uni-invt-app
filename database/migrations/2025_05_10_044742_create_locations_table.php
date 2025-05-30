@@ -12,21 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('coordinate');
-            $table->string('img_path')->nullable();
-            $table->string('description')->nullable();
+            $table->bigIncrements('lctn_id');
+            $table->string('lctn_name');
+            $table->string('lctn_coordinate');
+            $table->string('lctn_img_path')->nullable();
+            $table->string('lctn_description')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('created_by')->unsigned()->nullable();
-            $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();
-            $table->unsignedBigInteger('updated_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('lctn_created_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('lctn_deleted_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('lctn_updated_by')->unsigned()->nullable();
             $table->softDeletes();
             $table->string('sys_note')->nullable();
 
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lctn_created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lctn_updated_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lctn_deleted_by')->references('id')->on('users')->onDelete('cascade');
+
+            $table->renameColumn('updated_at', 'lctn_updated_at');
+            $table->renameColumn('created_at', 'lctn_created_at');
+            $table->renameColumn('deleted_at', 'lctn_deleted_at');
         });
     }
 

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_locations', function (Blueprint $table) {
+        Schema::create('returning_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('item_id')->unsigned()->nullable();
-            $table->unsignedBigInteger('location_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('return_id')->unsigned()->nullable();
             $table->integer('many_item');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->unsigned()->nullable();
@@ -27,7 +27,11 @@ return new class extends Migration
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->foreign('return_id')->references('id')->on('return_requests')->onDelete('cascade');
+
+            $table->renameColumn('updated_at', 'usr_updated_at');
+            $table->renameColumn('created_at', 'usr_created_at');
+            $table->renameColumn('deleted_at', 'usr_deleted_at');
         });
     }
 
@@ -36,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item_locations');
+        Schema::dropIfExists('returning_items');
     }
 };
