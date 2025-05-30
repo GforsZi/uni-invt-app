@@ -25,11 +25,11 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('ast_sys_note')->nullable();
 
-            $table->foreign('ast_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ast_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ast_deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ast_category_id')->references('id')->on('category_assets')->onDelete('cascade');
-            $table->foreign('ast_origin_id')->references('id')->on('asset_origins')->onDelete('cascade');
+            $table->foreign('ast_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ast_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ast_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ast_category_id')->references('ctgy_ast_id')->on('category_assets')->onDelete('cascade');
+            $table->foreign('ast_origin_id')->references('ast_orgn_id')->on('asset_origins')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'ast_updated_at');
             $table->renameColumn('created_at', 'ast_created_at');

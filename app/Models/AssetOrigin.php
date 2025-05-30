@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Location extends Model
+class AssetOrigin extends Model
 {
-    /** @use HasFactory<\Database\Factories\LocationFactory> */
+    /** @use HasFactory<\Database\Factories\ContributorFactory> */
     use HasFactory, SoftDeletes, Blameable;
 
     protected $guarded = ['id', 'timestamps'];
-    protected $primaryKey = 'lctn_id';
+    protected $primaryKey = 'ast_orgn_id';
 
-    public function loanLocations(): HasMany
+    public function assets(): HasMany
     {
-        return $this->hasMany(LoanLocation::class, 'ln_lctn_location_id', 'lctn_id');
+        return $this->hasMany(Asset::class, 'ast_origin_id', 'ast_orgn_id');
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('ln_lctn_location_id')->unsigned()->nullable();
             $table->unsignedBigInteger('ln_lctn_room_id')->unsigned()->nullable();
             $table->unsignedBigInteger('ln_lctn_loan_id')->unsigned()->nullable();
-            $table->unsignedBigInteger('ln_lctn_item_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('ln_lctn_asset_id')->unsigned()->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('ln_lctn_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('ln_lctn_deleted_by')->unsigned()->nullable();
@@ -24,13 +24,13 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('ln_lctn_sys_note')->nullable();
 
-            $table->foreign('ln_lctn_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ln_lctn_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ln_lctn_deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ln_lctn_location_id')->references('id')->on('locations')->onDelete('cascade');
-            $table->foreign('ln_lctn_room_id')->references('id')->on('assets')->onDelete('cascade');
-            $table->foreign('ln_lctn_loan_id')->references('id')->on('loan_requests')->onDelete('cascade');
-            $table->foreign('ln_lctn_item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('ln_lctn_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_lctn_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_lctn_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_lctn_location_id')->references('lctn_id')->on('locations')->onDelete('cascade');
+            $table->foreign('ln_lctn_room_id')->references('ast_id')->on('assets')->onDelete('cascade');
+            $table->foreign('ln_lctn_loan_id')->references('ln_id')->on('loans')->onDelete('cascade');
+            $table->foreign('ln_lctn_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'ln_lctn_updated_at');
             $table->renameColumn('created_at', 'ln_lctn_created_at');

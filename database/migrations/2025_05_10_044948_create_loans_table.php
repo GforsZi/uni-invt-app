@@ -27,10 +27,10 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('ln_sys_note')->nullable();
 
-            $table->foreign('ln_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ln_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ln_deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ln_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ln_user_id')->references('usr_id')->on('users')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'ln_updated_at');
             $table->renameColumn('created_at', 'ln_created_at');

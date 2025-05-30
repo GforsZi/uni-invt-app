@@ -23,12 +23,12 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('lng_ast_sys_note')->nullable();
 
-            $table->foreign('lng_ast_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('lng_ast_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('lng_ast_deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('lng_ast_asset_id')->references('id')->on('assets')->onDelete('cascade');
-            $table->foreign('lng_ast_loan_id')->references('id')->on('loans')->onDelete('cascade');
-            $table->foreign('lng_ast_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lng_ast_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('lng_ast_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('lng_ast_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('lng_ast_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');
+            $table->foreign('lng_ast_loan_id')->references('ln_id')->on('loans')->onDelete('cascade');
+            $table->foreign('lng_ast_user_id')->references('usr_id')->on('users')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'lng_ast_updated_at');
             $table->renameColumn('created_at', 'lng_ast_created_at');

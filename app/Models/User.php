@@ -6,6 +6,8 @@ namespace App\Models;
 
 use App\Traits\Blameable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +23,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $guarded = ['id', 'timestamps'];
+    protected $primaryKey = 'usr_id';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,18 +48,23 @@ class User extends Authenticatable
         ];
     }
 
-    public function roles()
+    public function role(): BelongsTo
     {
-        return $this->belongsToMany(Role::class, 'user_role');
+        return $this->belongsTo(Role::class, 'usr_role_id', 'rl_id');
     }
 
-    public function loanRequests()
+    public function createdItems(): HasMany
     {
-        return $this->hasMany(LoanRequest::class);
+        return $this->hasMany(Asset::class, 'ast_created_by', 'usr_id');
     }
 
-    public function returnRequests()
+    public function loans(): HasMany
     {
-        return $this->hasMany(ReturnRequest::class);
+        return $this->hasMany(Loans::class, 'ln_user_id', 'usr_id');
+    }
+
+    public function returns(): HasMany
+    {
+        return $this->hasMany(Returns::class, 'rtrn_user_id', 'usr_id');
     }
 }

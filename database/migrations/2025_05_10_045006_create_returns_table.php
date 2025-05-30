@@ -26,11 +26,11 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('sys_note')->nullable();
 
-            $table->foreign('rtrn_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('rtrn_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('rtrn_deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('rtrn_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('rtrn_loan_id')->references('id')->on('loan_requests')->onDelete('cascade');
+            $table->foreign('rtrn_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrn_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrn_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrn_user_id')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrn_loan_id')->references('ln_id')->on('loans')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'rtrn_updated_at');
             $table->renameColumn('created_at', 'rtrn_created_at');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('asset_logs', function (Blueprint $table) {
             $table->bigIncrements('ast_lg_id');
-            $table->enum('ast_lg_status', ['increase', 'reduce']);
+            $table->enum('ast_lg_status', ['increase', 'reduce'])->nullable();
             $table->string('ast_lg_note')->nullable();
             $table->unsignedBigInteger('ast_lg_asset_id')->unsigned()->nullable();
             $table->timestamps();
@@ -23,10 +23,10 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('ast_lg_sys_note')->nullable();
 
-            $table->foreign('ast_lg_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ast_lg_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ast_lg_deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ast_lg_asset_id')->references('id')->on('assets')->onDelete('cascade');
+            $table->foreign('ast_lg_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ast_lg_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ast_lg_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('ast_lg_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'ast_lg_updated_at');
             $table->renameColumn('created_at', 'ast_lg_created_at');

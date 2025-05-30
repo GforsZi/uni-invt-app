@@ -22,9 +22,9 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('desc_ast_sys_note')->nullable();
 
-            $table->foreign('desc_ast_created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('desc_ast_updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('desc_ast_deleted_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('desc_ast_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('desc_ast_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('desc_ast_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'desc_ast_updated_at');
             $table->renameColumn('created_at', 'desc_ast_created_at');

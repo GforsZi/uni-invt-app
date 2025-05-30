@@ -11,27 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('returning_items', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('item_id')->unsigned()->nullable();
-            $table->unsignedBigInteger('return_id')->unsigned()->nullable();
-            $table->integer('many_item');
+        Schema::create('returning_assets', function (Blueprint $table) {
+            $table->bigIncrements('rtrng_ast_id');
+            $table->unsignedBigInteger('rtrng_ast_asset_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('rtrng_ast_return_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('created_by')->unsigned()->nullable();
-            $table->unsignedBigInteger('deleted_by')->unsigned()->nullable();
-            $table->unsignedBigInteger('updated_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('rtrng_ast_created_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('rtrng_ast_deleted_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('rtrng_ast_updated_by')->unsigned()->nullable();
             $table->softDeletes();
-            $table->string('sys_note')->nullable();
+            $table->string('rtrng_ast_sys_note')->nullable();
 
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('deleted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->foreign('return_id')->references('id')->on('return_requests')->onDelete('cascade');
+            $table->foreign('rtrng_ast_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrng_ast_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrng_ast_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rtrng_ast_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');
+            $table->foreign('rtrng_ast_return_id')->references('rtrn_id')->on('returns')->onDelete('cascade');
 
-            $table->renameColumn('updated_at', 'usr_updated_at');
-            $table->renameColumn('created_at', 'usr_created_at');
-            $table->renameColumn('deleted_at', 'usr_deleted_at');
+            $table->renameColumn('updated_at', 'rtrng_ast_updated_at');
+            $table->renameColumn('created_at', 'rtrng_ast_created_at');
+            $table->renameColumn('deleted_at', 'rtrng_ast_deleted_at');
         });
     }
 

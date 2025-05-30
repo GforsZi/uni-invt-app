@@ -20,9 +20,9 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('rltn_ast_sys_note')->nullable();
 
-            $table->foreign('rltn_ast_room_id')->references('id')->on('assets')->onDelete('cascade');
-            $table->foreign('rltn_ast_asset_id')->references('id')->on('assets')->onDelete('cascade');
-            $table->foreign('rltn_ast_location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->foreign('rltn_ast_room_id')->references('ast_id')->on('assets')->onDelete('cascade');
+            $table->foreign('rltn_ast_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');
+            $table->foreign('rltn_ast_location_id')->references('lctn_id')->on('locations')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'rltn_ast_updated_at');
             $table->renameColumn('created_at', 'rltn_ast_created_at');
