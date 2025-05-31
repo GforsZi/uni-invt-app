@@ -4,7 +4,7 @@
   <!--end::To the end-->
   <!--begin::Copyright-->
   <strong>
-    Copyright &copy; 2014-2024&nbsp;
+    UNI-INVT
     <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
   </strong>
   All rights reserved.

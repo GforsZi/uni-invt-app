@@ -25,6 +25,7 @@
       integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI="
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.5.x/dist/component.min.js"></script>
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
@@ -53,8 +54,11 @@
       </div>
       <!--end::App Content Header-->
       <!--begin::App Content-->
-      <div class="container">
-        {{$slot}}
+        <div class="app-content">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            {{$slot}}
+          </div>
       </div>
       <!--end::App Content-->
     </main>

@@ -9,7 +9,7 @@
         </a>
       </li>
       <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
-      <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
+      <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Help</a></li>
     </ul>
     <!--end::Start Navbar Links-->
     <!--begin::End Navbar Links-->
@@ -25,7 +25,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-bs-toggle="dropdown" href="#">
           <i class="bi bi-chat-text"></i>
-          <span class="navbar-badge badge text-bg-danger">3</span>
+          <span class="navbar-badge badge text-bg-danger">0</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <a href="#" class="dropdown-item">
@@ -109,7 +109,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-bs-toggle="dropdown" href="#">
           <i class="bi bi-bell-fill"></i>
-          <span class="navbar-badge badge text-bg-warning">15</span>
+          <span class="navbar-badge badge text-bg-warning">0</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
@@ -144,21 +144,19 @@
       <!--begin::User Menu Dropdown-->
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-          <img
-            src="../../dist/assets/img/user2-160x160.jpg"
-            class="user-image rounded-circle shadow"
+            <img
+            src="{{asset('/photo_profile'. '/' . Auth::user()->usr_photo_path)}}" class="user-image rounded-circle shadow"
             alt="User Image" />
-          <span class="d-none d-md-inline">Alexander Pierce</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <!--begin::User Image-->
           <li class="user-header text-bg-primary">
             <img
-              src="../../dist/assets/img/user2-160x160.jpg"
+              src="{{asset('/photo_profile'. '/' . Auth::user()->usr_photo_path)}}"
               class="rounded-circle shadow"
               alt="User Image" />
             <p>
-              Alexander Pierce - Web Developer
+              {{Auth::user()->name}}
               <small>Member since Nov. 2023</small>
             </p>
           </li>

@@ -13,32 +13,41 @@
           </a>
         </div>
         <div class="card-body register-card-body">
+          @error('name')
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5>Error: {{$message}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @enderror
+          @error('email')
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5>Error: {{$message}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @enderror
+          @error('password')
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <h5>Error: {{$message}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @enderror
           <p class="register-box-msg">Register a new membership</p>
           <form action="/system/register" method="post">
             @csrf
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="" />
+                <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder=""  value="{{ old('name') }}" />
                 <label for="name">Full Name</label>
               </div>
               <div class="input-group-text"><span class="bi bi-person"></span></div>
-                @error('name')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
+
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="" />
+                <input id="email" type="email" name="email"  value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="" />
                 <label for="email">Email</label>
               </div>
               <div class="input-group-text"><span class="bi bi-envelope"></span></div>
-                @error('email')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
@@ -46,11 +55,6 @@
                 <label for="password">Password</label>
               </div>
               <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-              @error('password')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
@@ -58,11 +62,6 @@
                 <label for="password_confirmation">password confirmation</label>
               </div>
               <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-              @error('password_confirmation')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
             </div>
             <!--begin::Row-->
             <div class="row">

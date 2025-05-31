@@ -30,7 +30,6 @@ trait Blameable
 
     public function getBlameablePrefix()
     {
-        // Default kosong jika tidak diset
         return property_exists($this, 'blameablePrefix') ? $this->blameablePrefix : '';
     }
 }

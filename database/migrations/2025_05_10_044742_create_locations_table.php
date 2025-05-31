@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('lctn_id');
             $table->string('lctn_name');
-            $table->string('lctn_coordinate');
+            $table->double('lctn_latitude', 10, 7);
+            $table->double('lctn_longitude', 10, 7);
             $table->string('lctn_img_path')->nullable();
             $table->string('lctn_description')->nullable();
             $table->timestamps();

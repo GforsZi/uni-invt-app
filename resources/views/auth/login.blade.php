@@ -29,7 +29,7 @@
             @csrf
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" placeholder="" />
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  value="{{ old('email') }}" placeholder="" />
                 <label for="email">Email</label>
               </div>
               <div class="input-group-text"><span class="bi bi-envelope"></span></div>

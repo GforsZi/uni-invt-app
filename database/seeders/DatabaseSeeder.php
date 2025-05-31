@@ -93,7 +93,8 @@ class DatabaseSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('locations')->insert([
                 'lctn_name'       => $faker->city,
-                'lctn_coordinate'       => $faker->city,
+                'lctn_latitude'       => $faker->randomFloat(3, 10, 100),
+                'lctn_longitude'       => $faker->randomFloat(3, 10, 100),
                 'lctn_created_at'      => now(),
                 'lctn_updated_at'      => now(),
             ]);
