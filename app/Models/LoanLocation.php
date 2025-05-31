@@ -14,4 +14,9 @@ class LoanLocation extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'ln_lctn_id';
+    protected $blameablePrefix = 'ln_lctn_';
+
+    const CREATED_AT = 'ln_lctn_created_at';
+    const UPDATED_AT = 'ln_lctn_updated_at';
+    const DELETED_AT = 'ln_lctn_deleted_at';
 }

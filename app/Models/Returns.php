@@ -16,6 +16,11 @@ class Returns extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'rtrn_id';
+    protected $blameablePrefix = 'rtrn_';
+
+    const CREATED_AT = 'rtrn_created_at';
+    const UPDATED_AT = 'rtrn_updated_at';
+    const DELETED_AT = 'rtrn_deleted_at';
 
     public function user(): BelongsTo
     {

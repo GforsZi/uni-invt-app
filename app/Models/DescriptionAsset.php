@@ -14,6 +14,11 @@ class DescriptionAsset extends Model
     use HasFactory, SoftDeletes, Blameable;
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'rm_ast_id';
+    protected $blameablePrefix = 'rm_ast_';
+
+    const CREATED_AT = 'rm_ast_created_at';
+    const UPDATED_AT = 'rm_ast_updated_at';
+    const DELETED_AT = 'rm_ast_deleted_at';
 
     public function parent(): BelongsTo
     {

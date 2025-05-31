@@ -8,23 +8,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthControoler extends Controller
+class AuthController extends Controller
 {
     public function register_page()
     {
-        return view('auth.register');
+        return view('auth.register',  ["tittle" => "Register page"]);
     }
 
     public function register_system(Request $request)
     {
-        if ($request["password"] !== $request["confirm_password"]) {
-            return redirect("/register");
-            exit();
-        }
+        // if ($request["password"] !== $request["password_confirmation"]) {
+        //     return redirect("/register");
+        //     exit();
+        // }
         $validateData = $request->validate([
             "name" => "required | min:3 | max:255",
             "email" => "required | email:dns | unique:users,email",
-            "password" => "required | min:5 | max:30",
+            "password" => "required | min:5 | max:30 | confirmed",
         ]);
 
         $validateData["password"] = Hash::make($validateData["password"]);
@@ -35,7 +35,7 @@ class AuthControoler extends Controller
 
     public function login_page()
     {
-        return view('auth.login');
+        return view('auth.login', ["tittle" => "Login page"]);
     }
 
     public function login_system(Request $request)

@@ -15,6 +15,11 @@ class LoaningAsset extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'lng_ast_id';
+    protected $blameablePrefix = 'lng_ast_';
+
+    const CREATED_AT = 'lng_ast_created_at';
+    const UPDATED_AT = 'lng_ast_updated_at';
+    const DELETED_AT = 'lng_ast_deleted_at';
 
     public function asset(): BelongsTo
     {

@@ -13,5 +13,11 @@ class AssetDescription extends Pivot
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'ast_desc_id';
+    protected $blameablePrefix = 'ast_desc_';
+
+    const CREATED_AT = 'ast_desc_created_at';
+    const UPDATED_AT = 'ast_desc_updated_at';
+    const DELETED_AT = 'ast_desc_deleted_at';
+
     public $timestamps = false;
 }

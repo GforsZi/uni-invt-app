@@ -15,6 +15,11 @@ class Location extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'lctn_id';
+    protected $blameablePrefix = 'lctn_';
+
+    const CREATED_AT = 'lctn_created_at';
+    const UPDATED_AT = 'lctn_updated_at';
+    const DELETED_AT = 'lctn_deleted_at';
 
     public function loanLocations(): HasMany
     {

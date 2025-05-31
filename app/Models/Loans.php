@@ -16,6 +16,11 @@ class Loans extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'ln_id';
+    protected $blameablePrefix = 'ln_';
+
+    const CREATED_AT = 'ln_created_at';
+    const UPDATED_AT = 'ln_updated_at';
+    const DELETED_AT = 'ln_deleted_at';
 
     public function user(): BelongsTo
     {

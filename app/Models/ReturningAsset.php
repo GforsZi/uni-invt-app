@@ -15,6 +15,11 @@ class ReturningAsset extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'rtrng_ast_id';
+    protected $blameablePrefix = 'rtrng_ast_';
+
+    const CREATED_AT = 'rtrng_ast_created_at';
+    const UPDATED_AT = 'rtrng_ast_updated_at';
+    const DELETED_AT = 'rtrng_ast_deleted_at';
 
     public function asset(): BelongsTo
     {

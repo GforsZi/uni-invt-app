@@ -13,6 +13,11 @@ class RelationAsset extends Pivot
     use HasFactory, SoftDeletes, Blameable;
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'rltn_ast_id';
+    protected $blameablePrefix = 'rltn_ast_';
+
+    const CREATED_AT = 'rlrn_ast_created_at';
+    const UPDATED_AT = 'rlrn_ast_updated_at';
+    const DELETED_AT = 'rlrn_ast_deleted_at';
 
     public function room(): BelongsTo
     {

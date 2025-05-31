@@ -17,6 +17,12 @@ class Asset extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'ast_id';
+    protected $blameablePrefix = 'ast_';
+
+    const CREATED_AT = 'ast_created_at';
+    const UPDATED_AT = 'ast_updated_at';
+    const DELETED_AT = 'ast_deleted_at';
+
 
     public function category(): BelongsTo
     {

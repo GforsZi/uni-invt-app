@@ -15,6 +15,11 @@ class Role extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'rl_id';
+    protected $blameablePrefix = 'rl_';
+
+    const CREATED_AT = 'rl_created_at';
+    const UPDATED_AT = 'rl_updated_at';
+    const DELETED_AT = 'rl_deleted_at';
 
     public function users(): HasMany
     {

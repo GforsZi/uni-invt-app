@@ -15,6 +15,11 @@ class AssetOrigin extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'ast_orgn_id';
+    protected $blameablePrefix = 'ast_orgn_';
+
+    const CREATED_AT = 'ast_orgn_created_at';
+    const UPDATED_AT = 'ast_orgn_updated_at';
+    const DELETED_AT = 'ast_orgn_deleted_at';
 
     public function assets(): HasMany
     {

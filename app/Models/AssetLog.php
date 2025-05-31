@@ -15,6 +15,11 @@ class AssetLog extends Model
 
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'ast_lg_id';
+    protected $blameablePrefix = 'ast_lg_';
+
+    const CREATED_AT = 'ast_lg_created_at';
+    const UPDATED_AT = 'ast_lg_updated_at';
+    const DELETED_AT = 'ast_lg_deleted_at';
 
     public function asset(): BelongsTo
     {

@@ -9,19 +9,28 @@ trait Blameable
     public static function bootBlameable()
     {
         static::creating(function ($model) {
-            $model->created_by = Auth::id();
-            $model->updated_by = Auth::id();
+            $prefix = $model->getBlameablePrefix();
+            $model->{$prefix . 'created_by'} = Auth::id();
+            $model->{$prefix . 'updated_by'} = Auth::id();
         });
 
         static::updating(function ($model) {
-            $model->updated_by = Auth::id();
+            $prefix = $model->getBlameablePrefix();
+            $model->{$prefix . 'updated_by'} = Auth::id();
         });
 
         static::deleting(function ($model) {
+            $prefix = $model->getBlameablePrefix();
             if (Auth::check()) {
-                $model->deleted_by = Auth::id();
+                $model->{$prefix . 'deleted_by'} = Auth::id();
                 $model->save();
             }
         });
+    }
+
+    public function getBlameablePrefix()
+    {
+        // Default kosong jika tidak diset
+        return property_exists($this, 'blameablePrefix') ? $this->blameablePrefix : '';
     }
 }

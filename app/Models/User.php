@@ -24,6 +24,11 @@ class User extends Authenticatable
      */
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'usr_id';
+    protected $blameablePrefix = 'usr_';
+
+    const CREATED_AT = 'usr_created_at';
+    const UPDATED_AT = 'usr_updated_at';
+    const DELETED_AT = 'usr_deleted_at';
 
     /**
      * The attributes that should be hidden for serialization.
