@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{$tittle}}</title>
+    <title>{{$title}}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/adminlte.min.css') }}">
     <link
@@ -27,17 +27,41 @@
     />
 </head>
 
-<body>
-    {{$slot}}
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <div class="app-wrapper">
+    <x-navbar></x-navbar>
+    <x-sidebar></x-sidebar>
+    <main class="app-main">
+      <!--begin::App Content Header-->
+      <div class="app-content-header">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Row-->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class="mb-0">{{$title}}</h3>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+              </ol>
+            </div>
+          </div>
+          <!--end::Row-->
+        </div>
+        <!--end::Container-->
+      </div>
+      <!--end::App Content Header-->
+      <!--begin::App Content-->
+      <div class="container">
+        {{$slot}}
+      </div>
+      <!--end::App Content-->
+    </main>
+    <x-footer></x-footer>
+  </div>
+
 </body>
-<script
-    src="{{asset('resource/bootstrap-5.3.3-dist/js/bootstrap.min.js')}}"
-    type="text/javascript"
-    charset="utf-8"></script>
-<script
-    src="{{asset('resource/bootstrap-5.3.3-dist/js/adminlte.min.js')}}"
-    type="text/javascript"
-    charset="utf-8"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
       integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
@@ -49,6 +73,23 @@
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+  integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ="
+  crossorigin="anonymous"></script>
+<script
+    src="{{asset('/js/bootstrap.min.js')}}"
+    type="text/javascript"
+    charset="utf-8"></script>
+<script
+    src="{{asset('/js/app.js')}}"
+    type="text/javascript"
+    charset="utf-8"></script>
+<script
+    src="{{asset('/js/adminlte.min.js')}}"
+    type="text/javascript"
+    charset="utf-8"></script>
+
 
 
 </html>

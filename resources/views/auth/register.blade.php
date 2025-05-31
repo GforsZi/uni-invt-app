@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-slot:tittle></x-slot:tittle>
+    <x-slot:title>{{ $title }}</x-slot:title>
 <div class="register-page bg-body-secondary">
     <div class="register-box">
       <!-- /.register-logo -->
@@ -68,10 +68,6 @@
             <div class="row">
               <div class="col-8 d-inline-flex align-items-center">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    I agree to the <a href="#">terms</a>
-                  </label>
                 </div>
               </div>
               <!-- /.col -->
@@ -89,7 +85,7 @@
           </div>
           <!-- /.social-auth-links -->
           <p class="mb-0">
-            <a href="login.html" class="link-primary text-center"> I already have a membership </a>
+            <a href="/login" class="link-primary text-center"> I already have a account </a>
           </p>
         </div>
         <!-- /.register-card-body -->

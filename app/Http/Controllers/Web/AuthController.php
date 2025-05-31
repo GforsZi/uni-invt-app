@@ -7,12 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function register_page()
     {
-        return view('auth.register',  ["tittle" => "Register page"]);
+        return view('auth.register',  ["title" => "Register page"]);
     }
 
     public function register_system(Request $request)
@@ -35,7 +36,7 @@ class AuthController extends Controller
 
     public function login_page()
     {
-        return view('auth.login', ["tittle" => "Login page"]);
+        return view('auth.login', ["title" => "Login page"]);
     }
 
     public function login_system(Request $request)
@@ -52,5 +53,16 @@ class AuthController extends Controller
         }
 
         return back()->with("errorLogin", "Login failed!");
+    }
+
+    public function logout_system(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect("/");
     }
 }
