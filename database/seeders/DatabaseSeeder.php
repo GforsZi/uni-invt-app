@@ -169,5 +169,33 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         // $user->roles()->syncWithoutDetaching([$admin_role->id]);
+
+        $admin_role = Role::firstOrCreate([
+            'rl_name' => 'sapras',
+            'rl_description' => 'saranaprasarana',
+        ]);
+        $user_role = Role::firstOrCreate([
+            'rl_name' => 'user',
+            'rl_description' => 'user role',
+        ]);
+
+        $admin = User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'gfors',
+                'password' => Hash::make('11111111'),
+                'usr_activation' => true,
+                'usr_role_id' => $admin_role->rl_id,
+            ]
+        );
+        $user = User::firstOrCreate(
+            ['email' => 'user@example.com'],
+            [
+                'name' => 'zi',
+                'password' => Hash::make('11111111'),
+                'usr_activation' => true,
+                'usr_role_id' => $user_role->rl_id,
+            ]
+        );
     }
 }

@@ -2,7 +2,7 @@
   <!--begin::Sidebar Brand-->
   <div class="sidebar-brand">
     <!--begin::Brand Link-->
-    <a href="./index.html" class="brand-link">
+    <a href="/home" class="brand-link">
       <!--begin::Brand Image-->
       <img
         src="{{asset('/photo_profile/uni_invt.png')}}"
@@ -26,7 +26,8 @@
         role="menu"
         data-accordion="false">
 
-              <li class="nav-item menu-open">
+
+              <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
@@ -36,7 +37,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./index.html" class="nav-link active">
+                    <a href="/dashboard" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>View</p>
                     </a>
@@ -70,12 +71,6 @@
                       <p>Management role</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
-                    </a>
-                  </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -96,100 +91,37 @@
                   <li class="nav-item">
                     <a href="./widgets/info-box.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Management</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                 <i class="bi bi-card-list"></i>
-                  <p>
-                    Assets description
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="./widgets/small-box.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>View</p>
+                      <p>Management asset</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./widgets/info-box.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Management</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="bi bi-tag"></i>
-                  <p>
-                    Category assets
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="./widgets/small-box.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>View</p>
+                      <p>Management relation</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./widgets/info-box.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Management</p>
+                      <p>Management description</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./widgets/cards.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="bi bi-person-rolodex"></i>
-                  <p>
-                    Assets origins
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="./widgets/small-box.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>View</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./widgets/info-box.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Management</p>
+                      <p>management category</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./widgets/cards.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
+                      <p>management origin</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="./widgets/cards.html" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>management log</p>
                     </a>
                   </li>
                 </ul>
@@ -215,12 +147,6 @@
                       <p>Management</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
-                    </a>
-                  </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -242,12 +168,6 @@
                     <a href="./widgets/info-box.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Management</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>add</p>
                     </a>
                   </li>
                 </ul>

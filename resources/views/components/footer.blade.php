@@ -1,12 +1,11 @@
 <footer class="app-footer">
   <!--begin::To the end-->
-  <div class="float-end d-none d-sm-inline">Anything you want</div>
+  <div class="float-end d-none d-sm-inline">inventaris application</div>
   <!--end::To the end-->
   <!--begin::Copyright-->
   <strong>
     UNI-INVT
-    <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
   </strong>
-  All rights reserved.
+  Gfors corporation
   <!--end::Copyright-->
 </footer>
