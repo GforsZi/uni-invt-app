@@ -30,6 +30,10 @@ return new class extends Migration
             $table->renameColumn('created_at', 'rl_created_at');
             $table->renameColumn('deleted_at', 'rl_deleted_at');
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('usr_role_id')->references('rl_id')->on('roles')->onDelete('cascade');
+        });
     }
 
     /**
