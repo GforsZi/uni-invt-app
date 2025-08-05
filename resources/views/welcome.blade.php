@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
   <header class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
+      <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
@@ -33,40 +33,44 @@
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
-            <h2>Powerful Digital Solutions With GP<span>.</span></h2>
-            <p>We are team of talented digital marketers</p>
+            <h2> 𝙂𝙁𝙊𝙍𝙎 𝒞𝒪𝑅𝒫 <span></span></h2>
+            <p>Berkembang secepat cahaya</p>
           </div>
         </div>
 
         <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <i class="bi bi-binoculars"></i>
-              <h3><a href="">Lorem Ipsum</a></h3>
+            <i class='bxr  bxs-like'  ></i> 
+              <h3><a href="">Terpercaya</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
             <div class="icon-box">
-              <i class="bi bi-bullseye"></i>
-              <h3><a href="">Dolor Sitema</a></h3>
+              {{-- <i class="bi bi-bullseye"></i> --}}
+             <i class='bxr  bxs-trip'  ></i> 
+              <h3><a href="">Peta Interaktif & Lokasi Strategis</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
-              <i class="bi bi-fullscreen-exit"></i>
-              <h3><a href="">Sedare Perspiciatis</a></h3>
+              {{-- <i class="bi bi-fullscreen-exit"></i> --}}
+              <i class='bxr  bxs-alarm'  ></i> 
+              <h3><a href="">Layanan Cepat</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box">
-              <i class="bi bi-card-list"></i>
-              <h3><a href="">Magni Dolores</a></h3>
+              {{-- <i class="bi bi-card-list"></i> --}}
+              <i class='bxr  bxs-blocks'  ></i> 
+              <h3><a href="">Fullset</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
-              <i class="bi bi-gem"></i>
-              <h3><a href="">Nemos Enimade</a></h3>
+              {{-- <i class="bi bi-gem"></i> --}}
+              <i class='bxr  bxs-git-repo-forked'  ></i> 
+              <h3><a href="">Pengguna dan Sarana interaktif</a></h3>
             </div>
           </div>
         </div>
@@ -86,16 +90,16 @@
               <span class="sitename">GP</span>
             </a>
             <div class="footer-contact pt-3">
-              <p>A108 Adam Street</p>
-              <p>New York, NY 535022</p>
+              <p>Indonesia, Jawa barat</p>
+              <p>Bandung, Bojong Tanjung</p>
               <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+              <a href="#"title="X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" title="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" title="linkind"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
 
