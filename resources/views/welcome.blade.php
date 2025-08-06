@@ -3,7 +3,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
   <header class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
@@ -49,7 +48,7 @@
             <div class="icon-box">
               {{-- <i class="bi bi-bullseye"></i> --}}
              <i class='bxr  bxs-trip'  ></i> 
-              <h3><a href="">Peta Interaktif & Lokasi Strategis</a></h3>
+              <h3><a href="">Tersusun rapih</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
@@ -70,7 +69,7 @@
             <div class="icon-box">
               {{-- <i class="bi bi-gem"></i> --}}
               <i class='bxr  bxs-git-repo-forked'  ></i> 
-              <h3><a href="">Pengguna dan Sarana interaktif</a></h3>
+              <h3><a href="">Ter-organisir</a></h3>
             </div>
           </div>
         </div>

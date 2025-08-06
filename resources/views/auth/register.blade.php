@@ -7,7 +7,7 @@
         <div class="card-header">
           <a
             href="../index2.html"
-            class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover"
+            class="text-center link-offset-2 link-opacity-100 link-opacity-50-hover"
           >
             <h1 class="mb-0"><b>UNI-</b>INVT</h1>
           </a>
@@ -84,7 +84,7 @@
           </div>
           <!-- /.social-auth-links -->
           <p class="mb-0">
-            <a href="/login" class="link-primary text-center"> I already have a account </a>
+            <a href="/login" class="link-primary text-center"> I already have account </a>
           </p>
         </div>
         <!-- /.register-card-body -->
