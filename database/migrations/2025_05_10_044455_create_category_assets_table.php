@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('category_assets', function (Blueprint $table) {
             $table->bigIncrements('ctgy_ast_id');
             $table->string('ctgy_ast_name');
+            $table->string('ctgy_ast_img_path')->nullable();
             $table->string('ctgy_ast_description')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('ctgy_ast_created_by')->unsigned()->nullable();

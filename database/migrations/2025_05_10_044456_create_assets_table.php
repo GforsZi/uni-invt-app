@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->bigIncrements('ast_id');
-            $table->string('ast_name');
-            $table->string('ast_img_path')->nullable();
-            $table->string('ast_barcode')->nullable();
+            $table->string('ast_codename')->nullable();
             $table->unsignedBigInteger('ast_category_id')->unsigned()->nullable();
             $table->unsignedBigInteger('ast_origin_id')->unsigned()->nullable();
             $table->timestamps();
