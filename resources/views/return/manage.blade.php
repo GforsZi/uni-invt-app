@@ -7,7 +7,7 @@
           <th>loanner</th>
           <th>description</th>
           <th>accepted</th>
-          <th style="width: 60px">accept</th>
+          <th style="width: 60px">detail</th>
         </x-slot:header>
         @forelse ($returns as $index => $return)
         <tr class="align-middle">
@@ -21,11 +21,11 @@
               pending
             @endif
           </td>
-          <td><span class="badge text-bg-danger">55%</span></td>
+          <td><a href="/manage/return/{{ $return->rtrn_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
         </tr>
         @empty
         <tr>
-            <td colspan="3" class="text-center">Tidak ada user.</td>
+          <td colspan="5" class="w-100 text-center">404 | data not found</td>
         </tr>
         @endforelse
     </x-table_data>

@@ -35,15 +35,29 @@
       <!--begin::App Content Header-->
       <div class="app-content-header">
         <!--begin::Container-->
-        <div class="container-fluid">
+        <div class="container-fluid ">
           <!--begin::Row-->
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 mt-1">
               <h3 class="mb-0">{{$title}}</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item w-100">
+                  <div class="d-flex mt-1 justify-content-between">
+                    {{$header_layout??''}}
+                    <button class="btn mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-arrow-bar-left"></i></button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                      <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Sidebar Right</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body">
+                        {{ $cavas_side??'' }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
               </ol>
             </div>
           </div>

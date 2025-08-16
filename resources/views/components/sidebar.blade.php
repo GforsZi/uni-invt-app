@@ -77,7 +77,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/manage/asset" class="nav-link">
+                    <a href="/manage/asset?category=all" class="nav-link" >
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Management asset</p>
                     </a>
@@ -170,3 +170,17 @@
   </div>
   <!--end::Sidebar Wrapper-->
 </aside>
+{{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3 shadow"> 
+     <div class="modal-body p-4 text-center"> 
+       <h5 class="mb-0">Select asset category</h5> 
+       <p class="mb-0">You can always change your mind in your account settings.</p> 
+     </div> 
+     <div class="modal-footer flex-nowrap p-0"> 
+       <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancle</button> 
+       <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Submit</strong></button> 
+     </div> 
+   </div> 
+  </div>
+</div> --}}

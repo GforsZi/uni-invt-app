@@ -6,7 +6,6 @@
           <th style="width: 10px">#</th>
           <th>name</th>
           <th>description</th>
-          <th>image</th>
           <th style="width: 60px">detail</th>
         </x-slot:header>
         @forelse ($locations as $index => $location)
@@ -14,12 +13,11 @@
           <td>{{$locations->firstItem() + $index}}</td>
           <td>{{$location->lctn_name}}</td>
           <td>{{$location->lctn_description}}</td>
-          <td></td>
-          <td><span class="badge text-bg-danger">55%</span></td>
+          <td><a href="/manage/location/{{ $location->lctn_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
         </tr>
         @empty
         <tr>
-            <td colspan="3" class="text-center">Tidak ada user.</td>
+          <td colspan="4" class="w-100 text-center">404 | data not found</td>
         </tr>
         @endforelse
     </x-table_data>

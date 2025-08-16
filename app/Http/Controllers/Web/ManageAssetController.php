@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
+use App\Models\AssetOrigin;
+use App\Models\CategoryAsset;
 use Illuminate\Http\Request;
 
 class ManageAssetController extends Controller
@@ -13,10 +15,36 @@ class ManageAssetController extends Controller
         $search = $request->query();
         if (!$search) {
             $assets = null;
+            $categories = CategoryAsset::get();
         } else {
-            $assets = Asset::with(['origin', 'category'])->where('ast_category_id', $search['category'])->paginate(10);
+            if ($search['category'] == 'all') {
+                $assets = Asset::with(['origin', 'category'])->paginate(10);
+                $categories = CategoryAsset::get();
+            } else {
+                $assets = Asset::with(['origin', 'category'])->where('ast_category_id', $search['category'])->paginate(10);
+                $categories = CategoryAsset::get();
+            }
         }
 
-        return view('asset.manage', ['title' => 'manage asset page', 'assets' => $assets]);
+        return view('asset.manage', ['title' => 'manage asset page', 'assets' => $assets, 'categories' => $categories]);
+    }
+
+    public function detail_asset_page(Request $request, $id)
+    {
+        $asset = Asset::with(['origin', 'category'])->where('ast_id', $id)->get();
+        return view('asset.detail', ['title' => 'detail asset page', 'asset' => $asset]);
+    }
+
+    public function add_asset_page()
+    {
+        return view('asset.add', ['title' => 'add asset page']);
+    }
+
+    public function update_asset_page(Request $request, $id)
+    {
+        $asset = Asset::with(['origin', 'category'])->where('ast_id', $id)->get();
+        $categories = CategoryAsset::get();
+        $origins = AssetOrigin::get();
+        return view('asset.update', ['title' => 'edit asset page', 'asset' => $asset, 'categories' => $categories, 'origins' => $origins]);
     }
 }

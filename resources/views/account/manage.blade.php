@@ -8,7 +8,7 @@
           <th>username</th>
           <th>role</th>
           <th>activation</th>
-          <th style="width: 60px">activation</th>
+          <th style="width: 60px">detail</th>
         </x-slot:header>
         @forelse ($accounts as $index => $account)
         <tr class="align-middle">
@@ -25,11 +25,11 @@
               not activated
             @endif
           </td>
-          <td><span class="badge text-bg-danger">55%</span></td>
+          <td><a href="/manage/account/{{ $account->usr_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
         </tr>
         @empty
         <tr>
-            <td colspan="3" class="text-center">Tidak ada user.</td>
+          <td colspan="6" class="w-100 text-center">404 | data not found</td>
         </tr>
         @endforelse
     </x-table_data>

@@ -31,11 +31,11 @@
               pending
             @endif
           </td>
-          <td><span class="badge text-bg-danger">55%</span></td>
+          <td><a href="/manage/loan/{{ $loan->ln_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
         </tr>
         @empty
         <tr>
-            <td colspan="3" class="text-center">Tidak ada user.</td>
+          <td colspan="6" class="w-100 text-center">404 | data not found</td>
         </tr>
         @endforelse
     </x-table_data>

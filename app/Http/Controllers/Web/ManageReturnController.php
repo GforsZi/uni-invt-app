@@ -13,4 +13,10 @@ class ManageReturnController extends Controller
         $returns = Returns::with('user')->paginate(10);
         return view('return.manage', ['title' => 'manage return page', 'returns' => $returns]);
     }
+
+    public function detail_return_page(Request $request, $id)
+    {
+        $return = Returns::with('user')->where('rtrn_id', $id)->get();
+        return view('return.detail', ['title' => 'detail return page', 'return' => $return]);
+    }
 }

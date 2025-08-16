@@ -1,5 +1,16 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:header_layout>
+        <form action='/manage/asset/' class="d-flex gap-2" method="get">
+          <select name="category" class="form-select" aria-label="Default select example">
+            <option value="all" selected>Filter by category</option>
+            @foreach ($categories as $category)
+            <option value="{{ $category->ctgy_ast_id }}">{{ $category->ctgy_ast_name }}</option>
+            @endforeach
+          </select>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </x-slot:header_layout>
     <x-table_data :data="$assets">
         <x-slot:title>Manage asset</x-slot:title>
         <x-slot:header>
@@ -16,7 +27,7 @@
           <td>{{$asset->ast_codename}}</td>
           <td>{{$asset->origin->ast_orgn_name}}</td>
           <td>{{$asset->category->ctgy_ast_name}}</td>
-          <td><span class="badge text-bg-danger">55%</span></td>
+          <td><a href="/manage/asset/{{ $asset->ast_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
         </tr>
         @empty
         <tr>

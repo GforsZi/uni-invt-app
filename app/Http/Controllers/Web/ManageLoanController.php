@@ -13,4 +13,10 @@ class ManageLoanController extends Controller
         $loans = Loans::with('user')->paginate(10);
         return view('loan.manage', ['title' => 'manage loan page', 'loans' => $loans]);
     }
+
+    public function detail_loan_page(Request $request, $id)
+    {
+        $loan = Loans::with('user')->where('ln_id', $id)->get();
+        return view('loan.detail', ['title' => 'detail loan page', 'loan' => $loan]);
+    }
 }
