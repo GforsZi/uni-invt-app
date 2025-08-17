@@ -30,6 +30,6 @@ class ManageAccountController extends Controller
     {
         $account = User::where('usr_id', $id)->with('roles')->get();
         $roles = Role::get();
-        return view('account.update', ['title' => 'edit account page', 'accounts' => $account, 'roles' => $roles]);
+        return view('account.update', ['title' => 'edit account page', 'account' => $account, 'roles' => $roles]);
     }
 }

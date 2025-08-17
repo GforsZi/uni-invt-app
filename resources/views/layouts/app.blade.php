@@ -49,11 +49,11 @@
                     <button class="btn mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-arrow-bar-left"></i></button>
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                       <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Sidebar Right</h5>
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Right Sidebar</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                       </div>
                       <div class="offcanvas-body">
-                        {{ $cavas_side??'' }}
+                        {{ $side_canvas??'' }}
                       </div>
                     </div>
                   </div>
@@ -84,7 +84,7 @@
   src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
   integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
   crossorigin="anonymous"
-></script>
+></scrip>
 <script
   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
   integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
