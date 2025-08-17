@@ -45,7 +45,9 @@
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item w-100">
                   <div class="d-flex mt-1 justify-content-between">
-                    {{$header_layout??''}}
+                    <div>
+                      {{$header_layout??''}}
+                    </div>
                     <button class="btn mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-arrow-bar-left"></i></button>
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                       <div class="offcanvas-header">

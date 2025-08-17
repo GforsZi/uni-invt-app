@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-    <form class="needs-validation was-validated" novalidate="">
+    <form class="needs-validation" novalidate="">
         <hr>
       <div class="card-body">
         <div class="row g-3">
@@ -35,25 +35,5 @@
     <div class="card-footer mt-3">
       <button class="btn btn-info" type="submit">Submit form</button>
     </div>
-</form>
-<script>
-//   (() => {
-//     'use strict';
-//     const forms = document.querySelectorAll('.needs-validation');
-//     // Loop over them and prevent submission
-//     Array.from(forms).forEach((form) => {
-//       form.addEventListener(
-//         'submit',
-//         (event) => {
-//           if (!form.checkValidity()) {
-//             event.preventDefault();
-//             event.stopPropagation();
-//           }
-//           form.classList.add('was-validated');
-//         },
-//         false,
-//       );
-//     });
-//   })();
-</script>  
+</form> 
 </x-app-layout>
