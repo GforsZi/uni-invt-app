@@ -30,6 +30,27 @@
 
         color: #F3C623;
       }
+
+      body {
+        background-color: black;
+      }
+
+      .visi-misi-card {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+      }
+
+      .visi-misi-card:hover {
+        border-color: #F3C623;
+        color: #F3C623;
+        box-shadow: 0 0 20px rgba(243, 198, 35, 0.6);
+      }
+
+
+      .text-justify {
+        text-align: justify;
+      }
     </style>
   </header>
   <main class="main">
@@ -92,6 +113,84 @@
 
   </main>
 
+  <!-- About Section -->
+  <section id="about" class="about section dark-background py-5 mt-5">
+    <div class="container" data-aos="fade-up">
+      <div class="text-center mb-4">
+        <h2 class="text-white">Tentang Perusahaan</h2>
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <!-- <div class="divider-custom-icon"><i class="bi bi-info-circle text-warning"></i></div> -->
+          <div class="divider-custom-line"></div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card bg-transparent border-0 text-center text-light">
+            <div class="card-body">
+              <p class="fs-5">
+                <strong>GFORS CORP</strong> adalah perusahaan yang bergerak di bidang
+                <em>pengembangan perangkat lunak</em> dengan fokus pada inovasi, kecepatan, dan kualitas.
+                Kami menyediakan berbagai solusi digital yang dirancang untuk membantu bisnis, instansi,
+                maupun individu dalam meningkatkan produktivitas dan efisiensi kerja.
+              </p>
+              <p class="fs-5">
+                Dengan tim yang profesional dan kompeten, kami berkomitmen untuk menghadirkan layanan
+                yang <span class="text-warning">terpercaya, terstruktur, dan mudah diimplementasikan</span>.
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <!-- Visi & Misi Section -->
+  <section id="visi-misi" class="section dark-background py-5">
+    <div class="container" data-aos="fade-up">
+
+      <div class="text-center mb-5">
+        <h2 class="text-white">Visi & Misi</h2>
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-line"></div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card visi-misi-card bg-transparent border-light text-light h-100">
+            <div class="card-body">
+              <h5 class="text-center fw-bold" style="color: #F3C623;">Visi</h5>
+              <p class="card-text mt-3 text-justify">
+                Menjadi penyedia solusi perangkat lunak yang <strong>terpercaya, efisien, dan inovatif</strong>
+                dalam membantu organisasi mengoptimalkan produktivitas mereka secara berkelanjutan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card visi-misi-card bg-transparent border-light text-light h-100">
+            <div class="card-body">
+              <h5 class="text-center fw-bold" style="color: #F3C623;">Misi</h5>
+              <p class="card-text mt-3 text-justify">
+                Mengembangkan solusi perangkat lunak yang <strong>fleksibel</strong> dan mudah diimplementasikan
+                untuk mempermudah pengelolaan siklus hidup aset secara digital, serta mendukung transformasi teknologi
+                yang berorientasi pada peningkatan kinerja.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <br>
+
+
   <footer id="footer" class="footer dark-background">
 
     <div class="footer-top">
@@ -104,8 +203,8 @@
             <div class="footer-contact pt-3">
               <p>Indonesia, Jawa barat</p>
               <p>Kab.Bandung, Bojong Tanjung</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+62 5589 55488 55</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+62 877-1112-3201</span></p>
+              <p><strong>Email:</strong> <span>Gfors@Gmail.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
               <a href="#" title="X"><i class="bi bi-twitter-x"></i></a>
