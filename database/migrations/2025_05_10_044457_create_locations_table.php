@@ -17,6 +17,7 @@ return new class extends Migration
             $table->double('lctn_latitude', 10, 7);
             $table->double('lctn_longitude', 10, 7);
             $table->string('lctn_img_path')->nullable();
+            $table->string('lctn_img_public_id')->nullable();
             $table->string('lctn_description')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('lctn_created_by')->unsigned()->nullable();

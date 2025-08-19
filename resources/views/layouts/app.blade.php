@@ -35,15 +35,31 @@
       <!--begin::App Content Header-->
       <div class="app-content-header">
         <!--begin::Container-->
-        <div class="container-fluid">
+        <div class="container-fluid ">
           <!--begin::Row-->
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 mt-1">
               <h3 class="mb-0">{{$title}}</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item w-100">
+                  <div class="d-flex mt-1 justify-content-between">
+                    <div>
+                      {{$header_layout??''}}
+                    </div>
+                    <button class="btn mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-arrow-bar-left"></i></button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                      <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Right Sidebar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body">
+                        {{ $side_canvas??'' }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
               </ol>
             </div>
           </div>
@@ -70,7 +86,7 @@
   src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
   integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
   crossorigin="anonymous"
-></script>
+></scrip>
 <script
   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
   integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

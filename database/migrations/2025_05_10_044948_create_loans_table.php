@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ln_description')->nullable();
             $table->boolean('ln_status')->default(true);
             $table->date('ln_loan_limit')->nullable();
-            $table->boolean('ln_accepted')->default(false);
+            $table->boolean('ln_accepted')->nullable();
             $table->date('ln_approved_at')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('ln_created_by')->unsigned()->nullable();

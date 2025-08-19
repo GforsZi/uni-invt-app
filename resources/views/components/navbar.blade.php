@@ -35,7 +35,7 @@
           <span class="theme-icon-active">
             <i class="my-1"></i>
           </span>
-          <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+          <span class="d-lg-none ms-2" id="bd-theme-text"></span>
         </button>
         <ul
           class="dropdown-menu dropdown-menu-end"
@@ -73,7 +73,7 @@
               data-bs-theme-value="auto"
               aria-pressed="true"
             >
-              <i class="bi bi-circle-fill-half-stroke me-2"></i>
+              <i class="bi bi-circle-half me-2"></i>
               Auto
               <i class="bi bi-check-lg ms-auto d-none"></i>
             </button>
