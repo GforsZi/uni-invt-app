@@ -1,6 +1,7 @@
 <x-guest-layout>
   <x-slot:title>{{ $title }}</x-slot:title>
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <header class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
@@ -11,7 +12,7 @@
       </a>
 
       @auth
-      <a class="btn-getstarted m-0" style='margin: 0px;' href="/home">Go to home</a>
+      <a class="btn-getstarted m-0" style='margin: 0px;' href="/home">Login</a>
       @else
       <div>
         <a class="btn-getstarted m-0" href="/login">Login</a>
@@ -50,6 +51,16 @@
 
       .text-justify {
         text-align: justify;
+      }
+
+      .animate__zoomInDown {
+        display: inline-block;
+        margin: 0 0.5rem;
+
+        animation: zoomInDown;
+
+        animation-duration: 7s;
+
       }
     </style>
   </header>
@@ -117,7 +128,8 @@
   <section id="about" class="about section dark-background py-5 mt-5">
     <div class="container" data-aos="fade-up">
       <div class="text-center mb-4">
-        <h2 class="text-white">Tentang Perusahaan</h2>
+        <!-- <h2 class="text-white">Tentang Perusahaan</h2> -->
+        <h1 class="animate__animated animate__zoomInDown">Tentang Perusahaan</h1>
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
           <!-- <div class="divider-custom-icon"><i class="bi bi-info-circle text-warning"></i></div> -->
@@ -136,7 +148,7 @@
               </p>
               <p class="fs-5">
                 Dengan tim yang profesional dan kompeten, kami berkomitmen untuk menghadirkan layanan
-                yang <span class="text-warning">terpercaya, terstruktur, dan mudah diimplementasikan</span>.
+                yang <span class="text-warning">terpercaya, terstruktur, dan mudah diimplementasikan </span>.
 
               </p>
             </div>
@@ -152,7 +164,8 @@
     <div class="container" data-aos="fade-up">
 
       <div class="text-center mb-5">
-        <h2 class="text-white">Visi & Misi</h2>
+        <!-- <h2 class="text-white">Visi & Misi</h2> -->
+        <h1 class="animate__animated animate__zoomInDown">Visi & Misi</h1>
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
           <div class="divider-custom-line"></div>
