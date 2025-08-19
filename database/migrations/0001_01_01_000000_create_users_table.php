@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('usr_photo_path');
-            $table->string('usr_photo_public_id');
+            $table->string('usr_photo_path')->nullable();
+            $table->string('usr_photo_public_id')->nullable();
             $table->boolean('usr_activation')->default(false);
             $table->unsignedBigInteger('usr_role_id')->unsigned()->nullable();
             $table->rememberToken();
