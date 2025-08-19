@@ -3,5 +3,7 @@
     <x-slot:side_canvas>
         <a href="/manage/location/{{ $location[0]['lctn_id'] }}/edit" class="btn btn-warning w-100">Edit this data</a>
     </x-slot:side_canvas>
-    {{ $location }}
+    {{ $location[0]['lctn_name']}}
+
+    
 </x-app-layout>

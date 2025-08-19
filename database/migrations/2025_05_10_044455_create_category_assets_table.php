@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('ctgy_ast_id');
             $table->string('ctgy_ast_name');
             $table->string('ctgy_ast_img_path')->nullable();
+            $table->string('ctgy_ast_img_public_id')->nullable();
             $table->string('ctgy_ast_description')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('ctgy_ast_created_by')->unsigned()->nullable();

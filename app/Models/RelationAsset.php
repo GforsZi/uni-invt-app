@@ -14,10 +14,11 @@ class RelationAsset extends Pivot
     protected $guarded = ['id', 'timestamps'];
     protected $primaryKey = 'rltn_ast_id';
     protected $blameablePrefix = 'rltn_ast_';
+    protected $table = 'relation_assets';
 
-    const CREATED_AT = 'rlrn_ast_created_at';
-    const UPDATED_AT = 'rlrn_ast_updated_at';
-    const DELETED_AT = 'rlrn_ast_deleted_at';
+    const CREATED_AT = 'rltn_ast_created_at';
+    const UPDATED_AT = 'rltn_ast_updated_at';
+    const DELETED_AT = 'rltn_ast_deleted_at';
 
     public function room(): BelongsTo
     {

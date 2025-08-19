@@ -73,3 +73,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('logout', [AuthController::class, 'logout_system'])->name('logout');
 });
+
+// Route::middleware('auth')->group(function () {
+//     Route::post();
+//     Route::put();
+//     Route::delete();
+// });
