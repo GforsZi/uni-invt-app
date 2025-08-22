@@ -83,7 +83,7 @@
               <div class="col-lg-7 connectedSortable">
                                 <div class="card card-primary card-outline mb-4">
                   <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">Accordion</div></div>
+                  <div class="card-header"><div class="card-title">texts</div></div>
                   <!--end::Header-->
                   <!--begin::Body-->
                   <div class="card-body">
@@ -107,13 +107,7 @@
                           data-bs-parent="#accordionExample"
                         >
                           <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by
-                            default, until the collapse plugin adds the appropriate classes that we
-                            use to style each element. These classes control the overall appearance,
-                            as well as the showing and hiding via CSS transitions. You can modify
-                            any of this with custom CSS or overriding our default variables. It's
-                            also worth noting that just about any HTML can go within the
-                            <code>.accordion-body</code>, though the transition does limit overflow.
+                            <!-- text -->
                           </div>
                         </div>
                       </div>
@@ -136,14 +130,7 @@
                           data-bs-parent="#accordionExample"
                         >
                           <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden
-                            by default, until the collapse plugin adds the appropriate classes that
-                            we use to style each element. These classes control the overall
-                            appearance, as well as the showing and hiding via CSS transitions. You
-                            can modify any of this with custom CSS or overriding our default
-                            variables. It's also worth noting that just about any HTML can go within
-                            the <code>.accordion-body</code>, though the transition does limit
-                            overflow.
+                            <!-- text -->
                           </div>
                         </div>
                       </div>
@@ -166,14 +153,7 @@
                           data-bs-parent="#accordionExample"
                         >
                           <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden
-                            by default, until the collapse plugin adds the appropriate classes that
-                            we use to style each element. These classes control the overall
-                            appearance, as well as the showing and hiding via CSS transitions. You
-                            can modify any of this with custom CSS or overriding our default
-                            variables. It's also worth noting that just about any HTML can go within
-                            the <code>.accordion-body</code>, though the transition does limit
-                            overflow.
+                            <!-- text -->
                           </div>
                         </div>
                       </div>
