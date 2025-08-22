@@ -3,70 +3,73 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <header class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">UNI-INVT</h1>
-        <span>.</span>
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <!-- Logo -->
+      <a href="/" class="logo d-flex align-items-center order-1">
+        <h1 class="sitename mb-0">UNI-INVT<span>.</span></h1>
       </a>
 
-      @auth
-      @if (auth()->user()?->roles['rl_admin']??'0' == '1')
-      <a class="btn-getstarted m-0" style='margin: 0px;' href="/dashboard">Already login</a>
-      @else
-      <a class="btn-getstarted m-0" style='margin: 0px;' href="/home">Already login</a>
-      @endif
-      @else
-      <div>
-        <a class="btn-getstarted m-0" href="/login">Login</a>
-        <a class="btn-getstarted m-0" style='margin: 0px;' href="/register">Register</a>
+      <!-- Tombol Login/Register -->
+      <div class="auth-buttons d-flex order-2 ms-auto">
+        @auth
+        @if (auth()->user()?->roles['rl_admin']??'0' == '1')
+        <a class="btn-getstarted me-1" href="/dashboard">Already login</a>
+        @else
+        <a class="btn-getstarted me-1" href="/home">Already login</a>
+        @endif
+        @else
+        <a class="btn-getstarted me-0" href="/login">Login</a>
+        <a class="btn-getstarted ms-1" href="/register">Register</a>
+        @endauth
       </div>
-      @endauth
 
     </div>
-    <style>
-      .Motto {
-        color: white;
-
-      }
-
-      .Motto:hover {
-
-        color: #F3C623;
-      }
-
-      body {
-        background-color: black;
-      }
-
-      .visi-misi-card {
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-      }
-
-      .visi-misi-card:hover {
-        border-color: #F3C623;
-        color: #F3C623;
-        box-shadow: 0 0 20px rgba(243, 198, 35, 0.6);
-      }
+  </header>
 
 
-      .text-justify {
-        text-align: justify;
-      }
+  <style>
+    .Motto {
+      color: white;
 
-      .animate__zoomInDown {
-        display: inline-block;
-        margin: 0 0.5rem;
+    }
 
-        animation: zoomInDown;
+    .Motto:hover {
 
-        animation-duration: 7s;
+      color: #F3C623;
+    }
 
-      }
-    </style>
+    body {
+      background-color: black;
+    }
+
+    .visi-misi-card {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+    }
+
+    .visi-misi-card:hover {
+      border-color: #F3C623;
+      color: #F3C623;
+      box-shadow: 0 0 20px rgba(243, 198, 35, 0.6);
+    }
+
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .animate__zoomInDown {
+      display: inline-block;
+      margin: 0 0.5rem;
+
+      animation: zoomInDown;
+
+      animation-duration: 7s;
+
+    }
+  </style>
   </header>
   <main class="main">
 
@@ -152,7 +155,7 @@
               </p>
               <p class="fs-5">
                 Dengan tim yang profesional dan kompeten, kami berkomitmen untuk menghadirkan layanan
-                yang <span class="text-warning">terpercaya, terstruktur, dan mudah diimplementasikan </span>.
+                yang <span class="text-warning">terpercaya, terstruktur, dan mudah diimplementasikan </span>
 
               </p>
             </div>
