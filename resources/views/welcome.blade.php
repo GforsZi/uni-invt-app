@@ -12,7 +12,11 @@
       </a>
 
       @auth
-      <a class="btn-getstarted m-0" style='margin: 0px;' href="/home">Login</a>
+      @if (auth()->user()?->roles['rl_admin']??'0' == '1')
+      <a class="btn-getstarted m-0" style='margin: 0px;' href="/dashboard">Already login</a>
+      @else
+      <a class="btn-getstarted m-0" style='margin: 0px;' href="/home">Already login</a>
+      @endif
       @else
       <div>
         <a class="btn-getstarted m-0" href="/login">Login</a>

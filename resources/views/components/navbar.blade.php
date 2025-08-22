@@ -3,15 +3,19 @@
   <div class="container-fluid">
     <!--begin::Start Navbar Links-->
     <ul class="navbar-nav">
-      @if (auth()->user()?->roles['rl_name']??'user' == 'sapras')
+      @if (auth()->user()?->roles['rl_admin']??'0' == '1')
       <li class="nav-item">
         <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
           <i class="bi bi-list"></i>
         </a>
       </li>
       @endif
+      <li class="nav-item d-none d-md-block"><a href="{{ url()->previous() }}" class="nav-link">Back</a></li>
+      @if (auth()->user()?->roles['rl_admin']??'0' == '1')
+      <li class="nav-item d-none d-md-block"><a href="/dashboard" class="nav-link">Dashboard</a></li>
+      @else
       <li class="nav-item d-none d-md-block"><a href="/home" class="nav-link">Home</a></li>
-      <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Help</a></li>
+      @endif
     </ul>
     <!--end::Start Navbar Links-->
     <!--begin::End Navbar Links-->
@@ -205,7 +209,7 @@
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
             <img
             src="{{asset('/photo_profile'. '/' . Auth::user()->usr_photo_path)}}" class="user-image rounded-circle shadow"
-            alt="User Image" />
+            alt="" />
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <!--begin::User Image-->
@@ -213,10 +217,10 @@
             <img
               src="{{asset('/photo_profile'. '/' . Auth::user()->usr_photo_path)}}"
               class="rounded-circle shadow"
-              alt="User Image" />
+              alt="" />
             <p>
               {{Auth::user()->name}}
-              <small>Member since Nov. 2023</small>
+              <small>Member since {{Auth::user()->usr_created_at->format('F Y')}}</small>
             </p>
           </li>
           <!--end::User Image-->
@@ -233,7 +237,11 @@
           <!--end::Menu Body-->
           <!--begin::Menu Footer-->
           <li class="user-footer">
-            <a href="#" class="btn btn-default btn-flat">Profile</a>
+            @if (auth()->user()?->roles['rl_admin']??'0' == '1')
+            <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
+            @else
+            <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
+            @endif
             <a href="/logout" class="btn btn-default btn-flat float-end">Sign out</a>
           </li>
           <!--end::Menu Footer-->

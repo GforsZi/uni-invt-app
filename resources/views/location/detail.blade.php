@@ -43,7 +43,8 @@
             <div class="card">
                 <h5 class="card-header">Alamat</h5>
                 <div class="card-body">
-                    <p class="card-text">{{ $location[0]['lctn_name'] }}</p>
+                    <p class="card-text">Nama: {{ $location[0]['lctn_name'] }}</p>
+                    <p class="card-text">Description: {{ $location[0]['lctn_description'] }}</p>
                     <p class="card-text">Latitude: <span id="lat-text">{{ $location[0]['lctn_latitude'] }}</span></p>
                     <p class="card-text">Longitude: <span id="lng-text">{{ $location[0]['lctn_longitude'] }}</span></p>
                 </div>
@@ -69,14 +70,5 @@
         alamatMarker.bindPopup("<b>Alamat</b><br>" + name + "<br>").openPopup();
 
 
-        map.on('click', function(e) {
-            var newLat = e.latlng.lat.toFixed(6);
-            var newLng = e.latlng.lng.toFixed(6);
-
-            L.popup()
-                .setLatLng(e.latlng)
-                .setContent("Koordinat Klik:<br>" + newLat + ", " + newLng)
-                .openOn(map);
-        });
     </script>
 </x-app-layout>

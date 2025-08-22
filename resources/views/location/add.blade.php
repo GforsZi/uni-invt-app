@@ -60,30 +60,14 @@
         <div id="map" style="height:400px;   width:50% ;"></div> -->
 
         <script>
-            var map = L.map('map').setView([-6.997513615690157, 107.58015602767394], 17);
+            var map = L.map('map').setView([-1.886558571940574, 117.23889649506248
+], 4);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: 'UNI-INVT'
             }).addTo(map);
 
-            var geding1 = L.marker([-6.997982256727868, 107.58021102858952]).addTo(map);
-            geding1.bindPopup("<b>Gedung 1</b><br>Mahaputra");
-
-            var gedung2 = L.marker([-6.997633504762923, 107.5803479678652]).addTo(map);
-            gedung2.bindPopup("<b>Gedung 2</b><br>Mahaputra");
-
-            var masjid = L.marker([-6.997417775385263, 107.58057439478381]).addTo(map);
-            masjid.bindPopup("<b>Masjid</b><br>Mahaputra");
-
-            var balema = L.marker([-6.997092983094567, 107.58057439478381]).addTo(map);
-            balema.bindPopup("<b>Bale</b><br>Mahaputra");
-
-            var hangar = L.marker([-6.997513615690157, 107.58091271534725]).addTo(map);
-            hangar.bindPopup("<b>Hangar</b><br>Mahaputra");
-
-            var gerbang = L.marker([-6.9978650299730925, 107.5794693706668]).addTo(map);
-            gerbang.bindPopup("<b>SMK</b><br>Mahaputra");
 
             // Event klik map → masukkan lat lng ke form
             map.on('click', function(e) {

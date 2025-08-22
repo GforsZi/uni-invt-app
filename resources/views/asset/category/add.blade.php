@@ -1,5 +1,8 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <div class="card card-primary card-outline mb-4">
+      <!--begin::Header-->
+    <div class="card-header"><div class="card-title">Add category</div></div>
     <form class="needs-validation" novalidate="">
         <hr>
       <div class="card-body">
@@ -14,24 +17,12 @@
           <input type="text" class="form-control" id="validationCustom02" value="" placeholder="description category">
           <div class="valid-feedback">Looks good!</div>
         </div>
-        <div class="input-group mb-3 collapse" id="edit_img">
+        <div class="input-group mb-3" id="edit_img">
             <input type="file" class="form-control" required="" id="inputGroupFile02">
             <label class="input-group-text" for="inputGroupFile02" >Upload img</label>
         </div>
     </div>
-    <div class="col-sm-10">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" data-bs-toggle="collapse" data-bs-target="#edit_img" aria-expanded="false" aria-controls="edit_img" id="switchCheckChecked">
-          <label class="form-check-label" for="switchCheckChecked">edit img</label>
-        </div>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="checkIndeterminate">
-      <label class="form-check-label" for="checkIndeterminate">
-        delete img
-      </label>
-    </div>         
-    </div>
+  </div>
     <div class="card-footer mt-3">
       <button class="btn btn-info" type="submit">Submit form</button>
     </div>

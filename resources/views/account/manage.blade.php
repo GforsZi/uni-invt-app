@@ -1,5 +1,8 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:side_canvas>
+        <a href="/manage/account/add" class="btn btn-primary w-100">Add account</a>
+    </x-slot:side_canvas>
     <x-table_data :data="$accounts">
         <x-slot:title>Manage Account</x-slot:title>
         <x-slot:header>

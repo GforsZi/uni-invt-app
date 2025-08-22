@@ -1,7 +1,8 @@
 <x-app-layout>
   <x-slot:title>{{$title}}</x-slot:title>
   <x-slot:side_canvas>
-    <a href="/manage/location/add" class="btn btn-primary w-100">Add location</a>
+    <a href="/manage/location/add" class="btn btn-primary w-100 my-1">Add location</a>
+    <a href="/manage/location/view" class="btn btn-primary w-100 my-1">View all location</a>
   </x-slot:side_canvas>
   <x-table_data :data="$locations">
     <x-slot:title>Manage location</x-slot:title>

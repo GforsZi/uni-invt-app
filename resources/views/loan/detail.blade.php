@@ -4,4 +4,8 @@
         <a href="" class="btn btn-warning w-100">Edit this data</a>
     </x-slot:side_canvas>
     {{ $loan }}
+    <hr>
+    {{ $assets }}
+    <hr>
+    {{ $location }}
 </x-app-layout>

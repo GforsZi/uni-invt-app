@@ -288,33 +288,13 @@
      crossorigin=""></script>
 
      <script>
-      var map = L.map('map').setView([-6.997513615690157, 107.58015602767394], 17);
+      var map = L.map('map').setView([-1.886558571940574, 117.23889649506248
+], 4);
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: 'UNI-INVT'
 }).addTo(map);
 
-var geding1 = L.marker([-6.997982256727868, 107.58021102858952]).addTo(map);
-geding1.bindPopup("<b>Gedung 1</b><br>Mahaputra").openPopup();
-var gedung2 = L.marker([-6.997633504762923, 107.5803479678652]).addTo(map);
-gedung2.bindPopup("<b>Gedung 2</b><br>Mahaputra").openPopup();
-var masjid = L.marker([-6.997417775385263, 107.58057439478381]).addTo(map);
-masjid.bindPopup("<b>Masjid</b><br>Mahaputra").openPopup();
-var balema = L.marker([-6.997092983094567, 107.58057439478381]).addTo(map);
-balema.bindPopup("<b>Bale</b><br>Mahaputra").openPopup();
-var hangar = L.marker([-6.997513615690157, 107.58091271534725]).addTo(map);
-hangar.bindPopup("<b>Hangar</b><br>Mahaputra").openPopup();
-var gerbang = L.marker([-6.9978650299730925, 107.5794693706668]).addTo(map);
-gerbang.bindPopup("<b>SMK</b><br>Mahaputra").openPopup();
-map.on('click', function(e) {
-  var lat = e.latlng.lat;
-  var lng = e.latlng.lng;
-  console.log("Latitude: " + lat + " Longitude: " + lng);
-  L.popup()
-    .setLatLng(e.latlng)
-    .setContent("Koordinat:<br>" + lat + ", " + lng)
-    .openOn(map);
-});
      </script>
 </x-app-layout>

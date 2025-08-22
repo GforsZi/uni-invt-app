@@ -30,4 +30,9 @@ class LoaningAsset extends Model
     {
         return $this->belongsTo(Loans::class, 'lng_ast_loan_id', 'ln_id');
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'lng_ast_user_id', 'usr_id');
+    }
 }

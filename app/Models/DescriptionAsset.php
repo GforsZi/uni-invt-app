@@ -13,20 +13,20 @@ class DescriptionAsset extends Model
     /** @use HasFactory<\Database\Factories\DescriptionAssetFactory> */
     use HasFactory, SoftDeletes, Blameable;
     protected $guarded = ['id', 'timestamps'];
-    protected $primaryKey = 'rm_ast_id';
-    protected $blameablePrefix = 'rm_ast_';
+    protected $primaryKey = 'desc_ast_id';
+    protected $blameablePrefix = 'desc_ast_';
 
-    const CREATED_AT = 'rm_ast_created_at';
-    const UPDATED_AT = 'rm_ast_updated_at';
-    const DELETED_AT = 'rm_ast_deleted_at';
+    const CREATED_AT = 'desc_ast_created_at';
+    const UPDATED_AT = 'desc_ast_updated_at';
+    const DELETED_AT = 'desc_ast_deleted_at';
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Asset::class, 'rm_ast_room_id', 'ast_id');
+        return $this->belongsTo(Asset::class, 'desc_ast_room_id', 'ast_id');
     }
 
     public function child(): BelongsTo
     {
-        return $this->belongsTo(Asset::class, 'rm_ast_item_id', 'ast_id');
+        return $this->belongsTo(Asset::class, 'desc_ast_item_id', 'ast_id');
     }
 }

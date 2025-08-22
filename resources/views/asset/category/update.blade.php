@@ -1,5 +1,8 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+        <div class="card card-warning card-outline mb-4">
+      <!--begin::Header-->
+      <div class="card-header"><div class="card-title">Edit role</div></div>
     <form class="needs-validation" novalidate="">
         <hr>
       <div class="card-body">
@@ -33,7 +36,8 @@
     </div>         
     </div>
     <div class="card-footer mt-3">
-      <button class="btn btn-info" type="submit">Submit form</button>
+      <button class="btn btn-warning" type="submit">Submit form</button>
     </div>
-</form> 
+  </form> 
+</div>
 </x-app-layout>

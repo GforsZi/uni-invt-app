@@ -49,7 +49,12 @@ class AuthController extends Controller
         if (FacadesAuth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended("/home")->with("success", "Login success!");
+            $user = User::with('roles')->where('email', $credentials['email'])->get()->toArray();
+            if ($user[0]['usr_activation'] == false || $user[0]['roles']['rl_admin'] == true) {
+                return redirect()->intended("/dashboard")->with("success", "Login success!");
+            } else {
+                return redirect()->intended("/home")->with("success", "Login success!");
+            }
         }
 
         return back()->with("errorLogin", "Login failed!");

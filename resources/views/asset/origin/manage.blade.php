@@ -1,10 +1,13 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:side_canvas>
+        <a href="/manage/asset/origin/add" class="btn btn-primary w-100">Add origin</a>
+    </x-slot:side_canvas>
     <x-table_data :data="$origins">
         <x-slot:title>Manage origin asset</x-slot:title>
         <x-slot:header>
           <th style="width: 10px">#</th>
-          <th>username</th>
+          <th>name</th>
           <th>description</th>
           <th style="width: 60px">option</th>
         </x-slot:header>

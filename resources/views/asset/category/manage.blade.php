@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
      <x-slot:side_canvas>
-        <a href="/manage/asset/category/add" class="btn btn-primary w-100">add data</a>
+        <a href="/manage/asset/category/add" class="btn btn-primary w-100">add category</a>
     </x-slot:side_canvas>
     <x-table_data :data="$categories">
         <x-slot:title>Manage category asset</x-slot:title>

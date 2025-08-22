@@ -170,8 +170,9 @@ class DatabaseSeeder extends Seeder
         // $user->roles()->syncWithoutDetaching([$admin_role->id]);
 
         $admin_role = Role::firstOrCreate([
-            'rl_name' => 'sapras',
-            'rl_description' => 'saranaprasarana',
+            'rl_name' => 'sarpras',
+            'rl_description' => 'sarana perasarana',
+            'rl_admin' => true,
         ]);
         $user_role = Role::firstOrCreate([
             'rl_name' => 'user',

@@ -1,5 +1,8 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:side_canvas>
+        <a href="/manage/role/add" class="btn btn-primary w-100">Add role</a>
+    </x-slot:side_canvas>
     <x-table_data :data="$roles">
         <x-slot:title>Manage Role</x-slot:title>
         <x-slot:header>

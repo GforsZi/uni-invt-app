@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('rl_id');
             $table->string('rl_name');
             $table->text('rl_description')->nullable();
+            $table->boolean('rl_admin')->default(false);
             $table->timestamps();
             $table->unsignedBigInteger('rl_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('rl_deleted_by')->unsigned()->nullable();

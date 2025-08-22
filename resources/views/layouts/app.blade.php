@@ -28,7 +28,7 @@
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
   <div class="app-wrapper">
     <x-navbar></x-navbar>
-      @if (auth()->user()?->roles['rl_name'] == 'sapras')
+      @if (auth()->user()?->roles['rl_admin'] == true)
         <x-sidebar></x-sidebar>
       @endif
     <main class="app-main">

@@ -15,6 +15,12 @@ class ManageLocationController extends Controller
         return view('location.manage', ['title' => 'manage location page', 'locations' => $locations]);
     }
 
+    public function view_all_location_page()
+    {
+        $locations = Location::get();
+        return view('location.view_all', ['title' => 'view location page', 'locations' => $locations]);
+    }
+
     public function detail_location_page(Request $request, $id)
     {
         $location = Location::where('lctn_id', $id)->get();

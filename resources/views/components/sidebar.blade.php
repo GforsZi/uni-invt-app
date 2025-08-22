@@ -2,7 +2,7 @@
   <!--begin::Sidebar Brand-->
   <div class="sidebar-brand">
     <!--begin::Brand Link-->
-    <a href="/home" class="brand-link">
+    <a href="/" class="brand-link">
       <!--begin::Brand Image-->
       <img
         src="{{asset('/photo_profile/uni_invt.png')}}"

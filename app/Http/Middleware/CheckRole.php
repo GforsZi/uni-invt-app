@@ -23,11 +23,11 @@ class CheckRole
         $user = auth()->user();
 
         if (!$user || !$user->roles || $user->usr_activation == 0) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+            return redirect('/forbidden');
         }
 
-        if ($user->roles['rl_name'] != $requiredrole) {
-            return response()->json(['message' => 'Access denied: insufficient role level.'], 403);
+        if ($user->roles['rl_admin'] != $requiredrole) {
+            return redirect()->back();
         }
 
         return $next($request);
