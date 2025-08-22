@@ -142,6 +142,7 @@ class DatabaseSeeder extends Seeder
             DB::table('loan_locations')->insert([
                 'ln_lctn_loan_id'     => $faker->numberBetween(1, 10),
                 'ln_lctn_asset_id'    => $faker->numberBetween(1, 10),
+                'ln_lctn_room_id'    => $faker->numberBetween(1, 10),
                 'ln_lctn_location_id' => $faker->numberBetween(1, 10),
                 'ln_lctn_created_at'          => now(),
                 'ln_lctn_updated_at'          => now(),
