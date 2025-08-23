@@ -33,25 +33,31 @@
         </div>
 
         <!-- Form -->
-        <form>
+        <form action="/location/add" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
                 <label class="form-label">Latitude</label>
-                <input type="text" id="lat-input" class="form-control" readonly>
+                <input type="text" id="lat-input" class="form-control" readonly name="lctn_latitude">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Longitude</label>
-                <input type="text" id="lng-input" class="form-control" readonly>
+                <input type="text" id="lng-input" class="form-control" readonly name="lctn_longitude">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" name="image" class="form-control" >
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" class="form-control" value="">
+                <input type="text" class="form-control" value="" name="lctn_name">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name="lctn_description"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,7 +85,7 @@
 
                 L.popup()
                     .setLatLng(e.latlng)
-                    .setContent("Koordinat:<br>" + lat + ", " + lng)
+                    .setContent("Location:<br>" + lat + ", " + lng)
                     .openOn(map);
             });
         </script>

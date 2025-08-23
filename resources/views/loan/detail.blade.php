@@ -3,12 +3,12 @@
     <x-slot:side_canvas>
         <a href="" class="btn btn-success w-100">Approve this loan</a>
     </x-slot:side_canvas>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <div class="w-100">
         <div class="card mb-4">
           <div class="card-header">
-            <h3 class="card-title">Detail asset</h3>
+            <h3 class="card-title">Detail loan</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body p-0">
@@ -66,7 +66,7 @@
         <hr>
         <div class="card mb-4">
           <div class="card-header">
-            <h3 class="card-title">Decription asset</h3>
+            <h3 class="card-title">Loan asset</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body p-0">
@@ -95,7 +95,7 @@
         </div>
     </div>
     <hr>
-    <div style="height: 400px; flex:1;" id="map" data-location="{{ $location[0]['location'] }}"></div>
+    <div style="height: 400px; flex:1;" id="map" data-location="{{ $location[0]['location']??'' }}"></div>
     <script>
         const mapDiv = document.getElementById('map');
         const locations = mapDiv.dataset.location;
@@ -111,7 +111,7 @@
 
         locationsjson.forEach((location) => {
             let alamatMarker = L.marker([location.lctn_latitude, location.lctn_longitude]).addTo(map);
-            alamatMarker.bindPopup("<b>Address</b><br>" + location.lctn_name + "<br>").openPopup();
+            alamatMarker.bindPopup("<b>Location</b><br>" + location.lctn_name + "<br>").openPopup();
         });
 
     </script>

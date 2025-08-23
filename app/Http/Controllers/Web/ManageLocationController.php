@@ -44,46 +44,75 @@ class ManageLocationController extends Controller
             "lctn_name" => "required | min:3 | max:255",
             "lctn_latitude" => "required",
             "lctn_longitude" => "required",
-            "lctn_description" => "max:255",
+            "lctn_description" => "nullable | string | max:255",
             'image' => 'nullable|image|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
-            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
-                'folder' => 'location_img'
-            ]);
+            $destinationPath = public_path('media/photo_location/');
 
-            $validateData['lctn_img_path'] = $uploadedFile->getSecurePath();
-            $validateData['lctn_img_public_id'] = $uploadedFile->getPublicId();
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+
+            $request->file('image')->move($destinationPath, $filename);
+
+            $validateData['lctn_img_path'] = 'media/photo_location/' . $filename;
+            $validateData['lctn_img_public_id'] = $filename;
         }
 
         Location::create($validateData);
         return redirect("/manage/location")->with("success", "location created");
     }
 
-    public function edit_location_system(Request $request, $id)
+    public function update_location_system(Request $request, $id)
     {
-        $location = Location::where('lctn_id', $id)->get();
+        $location = Location::find($id);
 
         $validateData = $request->validate([
             "lctn_name" => "sometimes | required | min:3 | max:255",
             "lctn_latitude" => "sometimes | required",
             "lctn_longitude" => "sometimes | required",
-            "lctn_description" => "sometimes | max:255",
+            "lctn_description" => "sometimes | nullable | string | max:255",
             'image' => 'sometimes | nullable|image|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
-            if ($location->lctn_img_public_id) {
-                Cloudinary::destroy($location->lctn_img_public_id);
+            $path = $location->toArray();
+            $filePath = public_path($path['lctn_img_path']);
+            if ($path['lctn_img_path']) {
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+            $destinationPath = public_path('media/photo_location/');
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
             }
 
-            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
-                'folder' => 'location_img'
-            ]);
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
 
-            $validateData['lctn_img_path'] = $uploadedFile->getSecurePath();
-            $validateData['lctn_img_public_id'] = $uploadedFile->getPublicId();
+            $request->file('image')->move($destinationPath, $filename);
+
+            $validateData['lctn_img_path'] = 'media/photo_location/' . $filename;
+            $validateData['lctn_img_public_id'] = $filename;
+        }
+
+        if ($request->has('delete_image') === true) {
+            $path = $location->toArray();
+            $filePath = public_path($path['lctn_img_path']);
+            if ($path['lctn_img_path']) {
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                    $validateData['lctn_img_path'] = null;
+                    $validateData['lctn_img_public_id'] = null;
+                    $location->update($validateData);
+                    return redirect("/manage/location/" . $id . '/detail')->with("success", "category updated");
+                }
+            }
         }
 
         $location->update($validateData);
@@ -92,9 +121,13 @@ class ManageLocationController extends Controller
 
     public function delete_location_system(Request $request, $id)
     {
-        $location = Location::where('lctn_id', $id)->get();
-        if ($location->lctn_img_public_id) {
-            Cloudinary::destroy($location->lctn_img_public_id);
+        $location = Location::find($id);
+        $path = $location->toArray();
+        $filePath = public_path($path['lctn_img_path']);
+        if ($path['lctn_img_path']) {
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
         }
         $location->delete();
         return redirect("/manage/location")->with("success", "location deleted");

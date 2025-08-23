@@ -29,20 +29,20 @@ class ManageOriginAssetController extends Controller
     {
         $validateData = $request->validate([
             "ast_orgn_name" => "required | string | min:3 | max:255",
-            "ast_orgn_description" => "max:255"
+            "ast_orgn_description" => "nullable | string | max:255"
         ]);
 
         AssetOrigin::create($validateData);
         return redirect("/manage/asset/origin")->with("success", "asset origin created");
     }
 
-    public function edit_asset_origin_system(Request $request, $id)
+    public function update_asset_origin_system(Request $request, $id)
     {
-        $origin = AssetOrigin::where('ast_orgn_id', $id)->get();
+        $origin = AssetOrigin::find($id);
 
         $validateData = $request->validate([
             "ast_orgn_name" => "sometimes | required | string | min:3 | max:255",
-            "ast_orgn_description" => "sometimes | max:255"
+            "ast_orgn_description" => "sometimes | nullable | string | sometimes | max:255"
         ]);
 
         $origin->update($validateData);

@@ -13,18 +13,12 @@ class HomeController extends Controller
     public function home_page()
     {
         $user = User::where('usr_id', Auth::user()->usr_id)->with('roles')->get()->first();
-        return view('home.home', ["title" => "Home page", 'users' => $user]);
+        return view('user.home', ["title" => "Home page", 'users' => $user]);
     }
 
     public function profile_page()
     {
         $user = User::where('usr_id', Auth::user()->usr_id)->with('roles')->get()->first();
-        return view('home.profile', ["title" => "Profile page", 'users' => $user]);
-    }
-
-    public function admin_profile_page()
-    {
-        $user = User::where('usr_id', Auth::user()->usr_id)->with('roles')->get()->first();
-        return view('admin.profile', ["title" => "Admin profile page", 'users' => $user]);
+        return view('user.profile', ["title" => "Profile page", 'users' => $user]);
     }
 }

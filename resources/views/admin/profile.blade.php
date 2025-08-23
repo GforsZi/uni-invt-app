@@ -3,16 +3,13 @@
     <x-slot:side_canvas>
         <button type="button" class="btn btn-primary" style="width: 100%;">Edit Profile</button>
     </x-slot:side_canvas>
-    <!-- {{ $users }} -->
-    <!-- <p>name: {{$users['name']}}</p>
-    <p>name: {{$users['roles']['rl_name']}}</p> -->
     <div class="profil">
         <div class="card shadow-sm mb-3 w-100">
             <div class="row g-0 align-items-center">
 
 
                 <div class="col-12 col-md-4 d-flex justify-content-center p-3">
-                    <img src="{{ asset('/photo_profile/uni_invt.png') }}"
+                    <img src="{{ asset('/logo/uni_invt.png') }}"
                         class="img-fluid rounded-circle"
                         alt="Profile Image"
                         style="max-width: 180px;">

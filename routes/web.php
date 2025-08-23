@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [HomeController::class, 'profile_page'])->name('profile')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
 
-    Route::get('/admin/profile', [HomeController::class, 'admin_profile_page'])->name('admin_profile')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::get('/admin/profile', [DashboardController::class, 'admin_profile_page'])->name('admin_profile')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
 
     Route::get('/manage/account', [ManageAccountController::class, 'manage_account_page'])->name('manage_account')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::get('/manage/account/{id}/detail', [ManageAccountController::class, 'detail_account_page'])->name('detail_account')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
@@ -79,8 +79,41 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout_system'])->name('logout');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::post();
-//     Route::put();
-//     Route::delete();
-// });
+Route::middleware('auth')->group(function () {
+    Route::post('/account/add', [ManageAccountController::class, 'add_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/account/{id}/banned', [ManageAccountController::class, 'banned_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/account/{id}/activated', [ManageAccountController::class, 'activated_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/account/{id}/delete', [ManageAccountController::class, 'delete_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/role/add', [ManageRoleController::class, 'add_role_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/role/{id}/edit', [ManageRoleController::class, 'update_role_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/role/{id}/delete', [ManageRoleController::class, 'delete_role_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/asset/category/add', [ManageCategoryAssetController::class, 'add_asset_category_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/asset/category/{id}/edit', [ManageCategoryAssetController::class, 'update_asset_category_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/asset/category/{id}/delete', [ManageCategoryAssetController::class, 'delete_asset_category_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/asset/origin/add', [ManageOriginAssetController::class, 'add_asset_origin_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/asset/origin/{id}/edit', [ManageOriginAssetController::class, 'update_asset_origin_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/asset/origin/{id}/delete', [ManageOriginAssetController::class, 'delete_asset_origin_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/asset/add', [ManageAssetController::class, 'add_asset_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/asset/{id}/edit', [ManageAssetController::class, 'update_asset_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/asset/{id}/delete', [ManageAssetController::class, 'delete_asset_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/location/add', [ManageLocationController::class, 'add_location_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/location/{id}/edit', [ManageLocationController::class, 'update_location_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/location/{id}/delete', [ManageLocationController::class, 'delete_location_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/loan/add', [ManageLoanController::class, 'add_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::put('/loan/{id}/edit', [ManageLoanController::class, 'update_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::put('/loan/{id}/accepted', [ManageLoanController::class, 'accepted_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/loan/{id}/rejected', [ManageLoanController::class, 'rejected_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/loan/{id}/delete', [ManageLoanController::class, 'delete_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/return/add', [ManageReturnController::class, 'add_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::put('/return/{id}/edit', [ManageReturnController::class, 'update_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::put('/return/{id}/accepted', [ManageReturnController::class, 'accepted_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/return/{id}/rejected', [ManageReturnController::class, 'rejected_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/return/{id}/delete', [ManageReturnController::class, 'delete_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+});

@@ -20,7 +20,7 @@
 
         locationsjson.forEach((location) => {
             let alamatMarker = L.marker([location.lctn_latitude, location.lctn_longitude]).addTo(map);
-            alamatMarker.bindPopup("<b>Address</b><br>" + location.lctn_name + "<br>").openPopup();
+            alamatMarker.bindPopup("<b>Location</b><br>" + location.lctn_name + "<br>").openPopup();
         });
 
     </script>

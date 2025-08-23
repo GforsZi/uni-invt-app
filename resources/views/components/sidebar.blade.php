@@ -5,7 +5,7 @@
     <a href="/" class="brand-link">
       <!--begin::Brand Image-->
       <img
-        src="{{asset('/photo_profile/uni_invt.png')}}"
+        src="{{asset('/logo/uni_invt.png')}}"
         alt="AdminLTE Logo"
         class="brand-image opacity-75 shadow rounded-circle" />
       <!--end::Brand Image-->

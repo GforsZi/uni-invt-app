@@ -35,39 +35,68 @@ class ManageCategoryAssetController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
-                'folder' => 'category_asset_img'
-            ]);
+            $destinationPath = public_path('media/photo_category_asset/');
 
-            $validateData['ctgy_ast_img_path'] = $uploadedFile->getSecurePath();
-            $validateData['ctgy_ast_img_public_id'] = $uploadedFile->getPublicId();
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+
+            $request->file('image')->move($destinationPath, $filename);
+
+            $validateData['ctgy_ast_img_path'] = 'media/photo_category_asset/' . $filename;
+            $validateData['ctgy_ast_img_public_id'] = $filename;
         }
 
         CategoryAsset::create($validateData);
         return redirect("/manage/asset/category")->with("success", "category created");
     }
 
-    public function edit_asset_category_system(Request $request, $id)
+    public function update_asset_category_system(Request $request, $id)
     {
-        $category = CategoryAsset::where('ctgy_ast_id', $id)->get();
+        $category = CategoryAsset::find($id);
 
         $validateData = $request->validate([
             "ctgy_ast_name" => "sometimes | required | min:3 | max:255",
-            "ctgy_ast_description" => "sometimes | string | max:255",
+            "ctgy_ast_description" => "sometimes | nullable | string | max:255",
             'image' => 'sometimes | nullable | image | max:2048',
         ]);
 
         if ($request->hasFile('image')) {
-            if ($category->ctgy_ast_img_public_id) {
-                Cloudinary::destroy($category->ctgy_ast_img_public_id);
+            $path = $category->toArray();
+            $filePath = public_path($path['ctgy_ast_img_path']);
+            if ($path['ctgy_ast_img_path']) {
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+            $destinationPath = public_path('media/photo_category_asset/');
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
             }
 
-            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
-                'folder' => 'category_asset_img'
-            ]);
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
 
-            $validateData['ctgy_ast_img_path'] = $uploadedFile->getSecurePath();
-            $validateData['ctgy_ast_img_public_id'] = $uploadedFile->getPublicId();
+            $request->file('image')->move($destinationPath, $filename);
+
+            $validateData['ctgy_ast_img_path'] = 'media/photo_category_asset/' . $filename;
+            $validateData['ctgy_ast_img_public_id'] = $filename;
+        }
+
+        if ($request->has('delete_image') === true) {
+            $path = $category->toArray();
+            $filePath = public_path($path['ctgy_ast_img_path']);
+            if ($path['ctgy_ast_img_path']) {
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                    $validateData['ctgy_ast_img_path'] = null;
+                    $validateData['ctgy_ast_img_public_id'] = null;
+                    $category->update($validateData);
+                    return redirect("/manage/asset/category")->with("success", "category updated");
+                }
+            }
         }
 
         $category->update($validateData);
@@ -76,9 +105,13 @@ class ManageCategoryAssetController extends Controller
 
     public function delete_asset_category_system(Request $request, $id)
     {
-        $category = CategoryAsset::where('ctgy_ast_id', $id)->get();
-        if ($category->ctgy_ast_img_public_id) {
-            Cloudinary::destroy($category->ctgy_ast_img_public_id);
+        $category = CategoryAsset::find($id);
+        $path = $category->toArray();
+        $filePath = public_path($path['ctgy_ast_img_path']);
+        if ($path['ctgy_ast_img_path']) {
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
         }
         $category->delete();
         return redirect("/manage/asset/category")->with("success", "category deleted");

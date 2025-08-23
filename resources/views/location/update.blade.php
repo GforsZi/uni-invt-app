@@ -37,28 +37,41 @@
         </div>
 
         <!-- Form -->
-        <form>
+        <form action="/location/{{ $location[0]['lctn_id'] }}/edit" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label class="form-label">Latitude</label>
-                <input type="text" id="lat-input" value="{{ $location[0]['lctn_latitude'] }}" class="form-control" readonly>
+                <input type="text" id="lat-input" name="lctn_latitude" value="{{ $location[0]['lctn_latitude'] }}" class="form-control" readonly>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Longitude</label>
-                <input type="text" id="lng-input" value="{{ $location[0]['lctn_longitude'] }}" class="form-control" readonly>
+                <input type="text" id="lng-input" name="lctn_longitude" value="{{ $location[0]['lctn_longitude'] }}" class="form-control" readonly>
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" name="image">
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" class="form-control" value="{{ $location[0]['lctn_name'] }}">
+                <input type="text" class="form-control" name="lctn_name" value="{{ $location[0]['lctn_name'] }}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
-                <textarea class="form-control">{{ $location[0]['lctn_description'] }}</textarea>
+                <textarea name="lctn_description" class="form-control">{{ $location[0]['lctn_description'] }}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" name="delete_image" id="checkIndeterminate">
+                <label class="form-check-label" for="checkIndeterminate">
+                    delete img
+                </label>
+            </div>  
+
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
         <!-- 
         <div id="map" style="height:400px;   width:50% ;"></div> -->
@@ -90,7 +103,7 @@
 
                 L.popup()
                     .setLatLng(e.latlng)
-                    .setContent("Koordinat:<br>" + lat + ", " + lng)
+                    .setContent("Location:<br>" + lat + ", " + lng)
                     .openOn(map);
             });
         </script>

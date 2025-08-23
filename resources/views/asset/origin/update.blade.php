@@ -5,19 +5,21 @@
       <div class="card-header"><div class="card-title">Add origin</div></div>
       <!--end::Header-->
       <!--begin::Form-->
-      <form>
+      <form action="/asset/origin/{{ $origin[0]['ast_orgn_id'] }}/edit" method="post">
+        @csrf
+        @method('PUT')
         <!--begin::Body-->
         <div class="card-body">
           <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" value="{{ $origin[0]['ast_orgn_name'] }}" id="inputEmail3">
+              <input type="text" name="ast_orgn_name" class="form-control" value="{{ $origin[0]['ast_orgn_name'] }}" id="inputEmail3">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+            <label for="inputPassword3"  class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-10">
-              <textarea class="form-control">{{ $origin[0]['ast_orgn_description'] }}</textarea>
+              <textarea name="ast_orgn_description" class="form-control">{{ $origin[0]['ast_orgn_description'] }}</textarea>
             </div>
           </div>
           </fieldset>

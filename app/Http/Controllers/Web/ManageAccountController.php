@@ -25,7 +25,8 @@ class ManageAccountController extends Controller
 
     public function add_account_page()
     {
-        return view('account.add', ['title' => 'add account page']);
+        $role = Role::get();
+        return view('account.add', ['title' => 'add account page', 'roles' => $role]);
     }
 
     public function update_account_page(Request $request, $id)
@@ -41,20 +42,26 @@ class ManageAccountController extends Controller
             "name" => "required | min:3 | max:255",
             "email" => "required | email:dns | unique:users,email",
             "password" => "required | min:5 | max:30 | confirmed",
-            "usr_activation" => "required | boolean",
-            "usr_role_id" => "required | exists:roles,id",
+            "usr_activation" => "nullable | boolean",
+            "usr_role_id" => "required | exists:roles,rl_id",
             'image' => 'nullable|image|max:2048',
         ]);
 
         $validateData["password"] = Hash::make($validateData["password"]);
 
         if ($request->hasFile('image')) {
-            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
-                'folder' => 'photo_profile_img'
-            ]);
+            $destinationPath = public_path('media/photo_profile/');
 
-            $validateData['usr_photo_path'] = $uploadedFile->getSecurePath();
-            $validateData['usr_photo_public_id'] = $uploadedFile->getPublicId();
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+
+            $request->file('image')->move($destinationPath, $filename);
+
+            $validateData['usr_photo_path'] = 'media/photo_profile/' . $filename;
+            $validateData['usr_photo_public_id'] = $filename;
         }
 
         User::create($validateData);
@@ -75,7 +82,7 @@ class ManageAccountController extends Controller
 
     public function banned_account_system(Request $request, $id)
     {
-        $user = User::where('usr_id', $id)->get();
+        $user = User::find($id);
 
         $validateData = $request->validate([
             "usr_activation" => "required | boolean",
@@ -84,12 +91,27 @@ class ManageAccountController extends Controller
         $user->update($validateData);
         return redirect("/manage/account/" . $id . "/detail")->with("success", "account banned");
     }
+    public function activated_account_system(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $validateData = $request->validate([
+            "usr_activation" => "required | boolean",
+        ]);
+
+        $user->update($validateData);
+        return redirect("/manage/account/" . $id . "/detail")->with("success", "account activated");
+    }
 
     public function delete_account_system(Request $request, $id)
     {
-        $user = User::where('usr_id', $id)->get();
-        if ($user->usr_photo_public_id) {
-            Cloudinary::destroy($user->usr_photo_public_id);
+        $user = User::find($id);
+        $path = $user->toArray();
+        $filePath = public_path($path['usr_photo_path']);
+        if ($path['usr_photo_path']) {
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
         }
         $user->delete();
         return redirect("/manage/account")->with("success", "account deleted");

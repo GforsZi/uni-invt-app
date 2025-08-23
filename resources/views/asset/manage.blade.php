@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
     <x-slot:side_canvas>
-        <a href="/manage/account/add" class="btn btn-primary w-100">Add asset</a>
+        <a href="/manage/asset/add" class="btn btn-primary w-100">Add asset</a>
     </x-slot:side_canvas>
     <x-slot:header_layout>
         <form action='/manage/asset/' class="d-flex gap-2" method="get">

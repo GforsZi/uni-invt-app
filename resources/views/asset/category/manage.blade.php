@@ -7,6 +7,7 @@
         <x-slot:title>Manage category asset</x-slot:title>
         <x-slot:header>
           <th style="width: 10px">#</th>
+          <th>image</th>
           <th>name</th>
           <th>description</th>
           <th style="width: 60px">option</th>
@@ -14,6 +15,9 @@
         @forelse ($categories as $index => $category)
         <tr class="align-middle">
           <td>{{$categories->firstItem() + $index}}</td>
+          <td>
+            <img src="{{asset($category->ctgy_ast_img_path??'logo/uni_invt.png')}}" class="user-image rounded-circle shadow" width="50" alt="User Image" />
+          </td>
           <td>{{$category->ctgy_ast_name}}</td>
           <td>{{$category->ctgy_ast_description}}</td>
           <td>
@@ -29,15 +33,15 @@
             <div class="modal fade" id="deleteConfirmation{{$categories->firstItem() + $index}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteConfirmation{{$categories->firstItem() + $index}}Label" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-3 shadow"> 
-                <div class="modal-body p-4 text-center"> 
-                  <h5 class="mb-0">Delete this data?</h5> 
-                  <p class="mb-0">are you sure to delete data {{$categories->firstItem() + $index}}.</p> 
-                </div> 
-                <div class="modal-footer flex-nowrap p-0"> 
+                  <div class="modal-body p-4 text-center"> 
+                    <h5 class="mb-0">Delete this data?</h5> 
+                    <p class="mb-0">are you sure to delete data {{$categories->firstItem() + $index}}.</p> 
+                  </div> 
+                  <div class="modal-footer flex-nowrap p-0"> 
                   <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancle</button> 
                   <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Delete</strong></button> 
+                  </div> 
                 </div> 
-              </div> 
               </div>
             </div> 
           </td>

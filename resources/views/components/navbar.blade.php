@@ -208,14 +208,14 @@
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
             <img
-            src="{{asset('/photo_profile'. '/' . Auth::user()->usr_photo_path)}}" class="user-image rounded-circle shadow"
+            src="{{asset(Auth::user()->usr_photo_path??'logo/uni_invt.png')}}" class="user-image rounded-circle shadow"
             alt="" />
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <!--begin::User Image-->
           <li class="user-header text-bg-primary">
             <img
-              src="{{asset('/photo_profile'. '/' . Auth::user()->usr_photo_path)}}"
+              src="{{asset(Auth::user()->usr_photo_path??'logo/uni_invt.png')}}"
               class="rounded-circle shadow"
               alt="" />
             <p>
@@ -237,10 +237,10 @@
           <!--end::Menu Body-->
           <!--begin::Menu Footer-->
           <li class="user-footer">
-            @if (auth()->user()?->roles['rl_admin']??'0' == '1')
+            @if (auth()->user()?->roles['rl_admin']??0 == 1)
             <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
             @else
-            <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
+            <a href="/profile" class="btn btn-default btn-flat">Profile</a>
             @endif
             <a href="/logout" class="btn btn-default btn-flat float-end">Sign out</a>
           </li>
