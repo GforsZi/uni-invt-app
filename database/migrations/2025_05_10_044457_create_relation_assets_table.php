@@ -17,8 +17,15 @@ return new class extends Migration
             $table->unsignedBigInteger('rltn_ast_asset_id')->unsigned()->nullable();
             $table->unsignedBigInteger('rltn_ast_location_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('rltn_ast_created_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('rltn_ast_deleted_by')->unsigned()->nullable();
+            $table->unsignedBigInteger('rltn_ast_updated_by')->unsigned()->nullable();
             $table->softDeletes();
             $table->string('rltn_ast_sys_note')->nullable();
+
+            $table->foreign('rltn_ast_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rltn_ast_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('rltn_ast_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
 
             $table->foreign('rltn_ast_room_id')->references('ast_id')->on('assets')->onDelete('cascade');
             $table->foreign('rltn_ast_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');

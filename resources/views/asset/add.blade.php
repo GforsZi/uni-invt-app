@@ -6,13 +6,14 @@
     <!--end::Header-->
     <!--begin::Body-->
     <div class="card-body">
-      <form method="post" action="">
+      <form method="post" action="/asset/add">
+        @csrf
       <div class="input-group mb-3">
-        <input type="text" class="form-control" required placeholder="codename" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" required placeholder="codename" name="ast_codename" aria-label="Username" aria-describedby="basic-addon1">
         <button type="button" class="btn btn-secondary">generate</button>
         </div>
         <div class="input-group mb-3">
-          <select name="category" class="form-select" required aria-label="Default select example">
+          <select name="ast_category_id" class="form-select" required aria-label="Default select example">
             <option value="null" selected>select category</option>
             @foreach ($categories as $category)
             <option value="{{ $category->ctgy_ast_id }}">{{ $category->ctgy_ast_name }}</option>
@@ -20,7 +21,7 @@
           </select>
         </div>
         <div class="input-group mb-3">
-          <select name="category" class="form-select" aria-label="Default select example">
+          <select name="ast_origin_id" class="form-select" aria-label="Default select example">
             <option value="null" selected>select origin</option>
             @foreach ($origins as $origin)
             <option value="{{ $origin->ast_orgn_id }}">{{ $origin->ast_orgn_name }}</option>
@@ -28,7 +29,7 @@
           </select>
         </div>
         <div class="input-group mb-3">
-          <select name="category" class="form-select" aria-label="Default select example">
+          <select name="rltn_ast_location_id" class="form-select" aria-label="Default select example">
             <option value="null" selected>select location</option>
             @foreach ($locations as $location)
             <option value="{{ $location->lctn_id }}">{{ $location->lctn_name }}</option>
@@ -36,7 +37,7 @@
           </select>
         </div>
         <div class="input-group mb-3" id="descriptions-wrapper">
-            <div class="input-group mb-2"  >
+            <div class="input-group mb-2" id="oldDiv" >
                 <input type="text" name="descriptions[0][title]"  class="form-control" placeholder="title">
                 <input type="text" name="descriptions[0][value]"class="form-control" placeholder="value">
                 <button type="button" class="btn btn-success  add-description">+</button>
@@ -55,12 +56,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     let index = 1;
     const wrapper = document.getElementById('descriptions-wrapper');
+    const oldDiv = document.getElementById('oldDiv');
 
     wrapper.addEventListener('click', function(e) {
         if (e.target.classList.contains('add-description')) {
             e.preventDefault();
             let newRow = document.createElement('div');
-            newRow.classList.add('input-group', 'mb-2', 'description-row');
+            newRow.classList.add('input-group', 'description-row');
             newRow.innerHTML = `
             <div class="input-group mb-2"  >
                 <input type="text" name="descriptions[${index}][title]"  class="form-control" placeholder="title">
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button type="button" class="btn btn-danger remove-description">-</button>
             </div>
             `;
-            wrapper.appendChild(newRow);
+            wrapper.insertBefore(newRow, oldDiv);
             index++;
         }
 

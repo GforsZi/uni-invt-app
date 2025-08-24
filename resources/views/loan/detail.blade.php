@@ -1,8 +1,54 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
     <x-slot:side_canvas>
-        <a href="" class="btn btn-success w-100">Approve this loan</a>
+      @if ($loan[0]['ln_accepted'] === 1)
+      <form action="/loan/{{ $loan[0]['ln_id'] }}/rejected" method="post">
+        @csrf
+        @method('PUT')
+        <input type="hidden" value="0" name="ln_accepted">
+        <button type="submit" class="btn btn-warning mb-2 w-100">Reject rhis loan</button>
+      </form>
+      @elseif ($loan[0]['ln_accepted'] === 0)
+      <form action="/loan/{{ $loan[0]['ln_id'] }}/accepted" method="post">
+        @csrf
+        @method('PUT')
+        <input type="hidden" value="1" name="ln_accepted">
+        <button type="submit" class="btn btn-success mb-2 w-100">Approve this loan</button>
+      </form>
+      @else
+      <form action="/loan/{{ $loan[0]['ln_id'] }}/accepted" method="post">
+        @csrf
+        @method('PUT')
+        <input type="hidden" value="1" name="ln_accepted">
+        <button type="submit" class="btn btn-success mb-2 w-100">Approve this loan</button>
+      </form>
+      <form action="/loan/{{ $loan[0]['ln_id'] }}/rejected" method="post">
+        @csrf
+        @method('PUT')
+        <input type="hidden" value="0" name="ln_accepted">
+        <button type="submit" class="btn btn-warning mb-2 w-100">Reject rhis loan</button>
+      </form>
+      @endif
     </x-slot:side_canvas>
+    <x-slot:header_layout>
+      <a class="btn btn-danger w-100 mb-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#deleteConfirmation{{$loan[0]['ln_id']}}" >Delete this loan</a>
+            <div class="modal fade" id="deleteConfirmation{{$loan[0]['ln_id']}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteConfirmation{{$loan[0]['ln_id']}}Label" aria-hidden="true">
+              <form action="/loan/{{ $loan[0]['ln_id'] }}/delete" method="post" class="modal-dialog modal-dialog-centered">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content rounded-3 shadow"> 
+                <div class="modal-body p-4 text-center"> 
+                  <h5 class="mb-0">Delete this data?</h5> 
+                  <p class="mb-0">are you sure to delete data {{$loan[0]['ln_id']}}.</p> 
+                </div> 
+                <div class="modal-footer flex-nowrap p-0"> 
+                  <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancle</button> 
+                  <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Delete</strong></button> 
+                </div> 
+              </div> 
+              </form>
+            </div> 
+    </x-slot:header_layout>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <div class="w-100">
@@ -22,7 +68,7 @@
               <tbody>
                 <tr class="align-middle">
                   <td>User: </td>
-                  <td>{{ $loan[0]['user']['name'] }}</td>
+                  <td>{{ $loan[0]['user']['name']??'not have' }}</td>
                 </tr>
                 <tr class="align-middle">
                     <td>Description: </td>
@@ -45,6 +91,18 @@
                       not have
                     @else
                       {{$loan[0]['ln_loan_limit']}}
+                    @endif
+                  </td>
+                </tr>
+                <tr class="align-middle">
+                  <td>Accepted: </td>
+                  <td>
+                    @if ($loan[0]['ln_accepted'] === 1)
+                      accepted
+                    @elseif ($loan[0]['ln_accepted'] === 0)
+                    not accepted
+                    @else
+                    pendding
                     @endif
                   </td>
                 </tr>

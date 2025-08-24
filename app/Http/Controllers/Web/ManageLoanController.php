@@ -23,4 +23,37 @@ class ManageLoanController extends Controller
         $location = LoanLocation::with(['asset', 'location', 'room'])->where('ln_lctn_loan_id', $id)->get();
         return view('loan.detail', ['title' => 'detail loan page', 'loan' => $loan, 'assets' => $asset, 'location' => $location]);
     }
+
+    public function accepted_loan_system(Request $request, $id)
+    {
+        $loan = Loans::find($id);
+
+        $validateData = $request->validate([
+            'ln_accepted' => 'sometimes | required | boolean'
+        ]);
+        $validateData['ln_approved_at'] = now();
+
+        $loan->update($validateData);
+        return redirect('/manage/loan/' . $id . '/detail')->with('success', 'loan accepted');
+    }
+
+    public function rejected_loan_system(Request $request, $id)
+    {
+        $loan = Loans::find($id);
+
+        $validateData = $request->validate([
+            'ln_accepted' => 'sometimes | required | boolean'
+        ]);
+        $validateData['ln_approved_at'] = now();
+
+        $loan->update($validateData);
+        return redirect('/manage/loan/' . $id . '/detail')->with('success', 'loan rejected');
+    }
+
+    public function delete_loan_system($id)
+    {
+        $loan = Loans::find($id);
+        $loan->delete();
+        return redirect('/manage/loan/')->with('success', 'loan deleted');
+    }
 }

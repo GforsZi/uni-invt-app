@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('asset_logs', function (Blueprint $table) {
             $table->bigIncrements('ast_lg_id');
-            $table->enum('ast_lg_status', ['increase', 'reduce'])->nullable();
+            $table->enum('ast_lg_status', ['good', 'damage', 'lost'])->nullable();
             $table->string('ast_lg_note')->nullable();
             $table->unsignedBigInteger('ast_lg_asset_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('ast_lg_return_id')->unsigned()->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('ast_lg_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('ast_lg_deleted_by')->unsigned()->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->foreign('ast_lg_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('ast_lg_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('ast_lg_asset_id')->references('ast_id')->on('assets')->onDelete('cascade');
+            $table->foreign('ast_lg_return_id')->references('rtrn_id')->on('returns')->onDelete('cascade');
 
             $table->renameColumn('updated_at', 'ast_lg_updated_at');
             $table->renameColumn('created_at', 'ast_lg_created_at');

@@ -12,11 +12,13 @@
         @forelse ($returns as $index => $return)
         <tr class="align-middle">
           <td>{{$returns->firstItem() + $index}}</td>
-          <td>{{$return->user->name}}</td>
+          <td>{{$return->user->name??'not have'}}</td>
           <td>{{$return->rtrn_description}}</td>
           <td>
-            @if ($return->rtrn_accepted)
+            @if ($return->rtrn_accepted === 1)
               accepted
+            @elseif ($return->rtrn_accepted === 0)
+              rejected
             @else
               pending
             @endif

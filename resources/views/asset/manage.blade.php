@@ -15,6 +15,7 @@
         </form>
     </x-slot:header_layout>
     <x-table_data :data="$assets">
+      <x-slot:query>{{$search??'&category=all'}}</x-slot:query>
         <x-slot:title>Manage asset</x-slot:title>
         <x-slot:header>
           <th style="width: 10px">#</th>
@@ -28,8 +29,8 @@
         <tr class="align-middle">
           <td>{{$assets->firstItem() + $index}}</td>
           <td>{{$asset->ast_codename}}</td>
-          <td>{{$asset->origin->ast_orgn_name}}</td>
-          <td>{{$asset->category->ctgy_ast_name}}</td>
+          <td>{{$asset->origin->ast_orgn_name??'not have'}}</td>
+          <td>{{$asset->category->ctgy_ast_name??'not have'}}</td>
           <td><a href="/manage/asset/{{ $asset->ast_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
         </tr>
         @empty

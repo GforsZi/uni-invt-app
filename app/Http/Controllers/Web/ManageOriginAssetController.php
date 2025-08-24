@@ -51,7 +51,7 @@ class ManageOriginAssetController extends Controller
 
     public function delete_asset_origin_system(Request $request, $id)
     {
-        $origin = AssetOrigin::where('ast_orgn_id', $id)->get();
+        $origin = AssetOrigin::find($id);
         $origin->delete();
         return redirect("/manage/asset/origin")->with("success", "asset origin deleted");
     }

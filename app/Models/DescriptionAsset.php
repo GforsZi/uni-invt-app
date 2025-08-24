@@ -6,6 +6,7 @@ use App\Traits\Blameable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DescriptionAsset extends Model
@@ -28,5 +29,15 @@ class DescriptionAsset extends Model
     public function child(): BelongsTo
     {
         return $this->belongsTo(Asset::class, 'desc_ast_item_id', 'ast_id');
+    }
+
+    public function assets(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Asset::class,
+            'asset_descriptions',
+            'ast_desc_description_id',
+            'ast_desc_asset_id',
+        );
     }
 }

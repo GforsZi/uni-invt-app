@@ -5,6 +5,23 @@
     </x-slot:side_canvas>
     <x-slot:header_layout>
       <button class="btn btn-primary mx-2" data-bs-toggle="collapse" data-bs-target="#desc_ast" aria-expanded="false" aria-controls="desc_ast">description</button>
+      <a class="btn btn-danger" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#deleteConfirmation{{$asset[0]['ast_id']}}" >Delete this asset</a>
+            <div class="modal fade" id="deleteConfirmation{{$asset[0]['ast_id']}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteConfirmation{{$asset[0]['ast_id']}}Label" aria-hidden="true">
+              <form action="/asset/{{ $asset[0]['ast_id'] }}/delete" method="post" class="modal-dialog modal-dialog-centered">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content rounded-3 shadow"> 
+                <div class="modal-body p-4 text-center"> 
+                  <h5 class="mb-0">Delete this data?</h5> 
+                  <p class="mb-0">are you sure to delete data {{$asset[0]['ast_id']}}.</p> 
+                </div> 
+                <div class="modal-footer flex-nowrap p-0"> 
+                  <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancle</button> 
+                  <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Delete</strong></button> 
+                </div> 
+              </div> 
+              </form>
+            </div> 
     </x-slot:header_layout>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -29,11 +46,11 @@
                 </tr>
                 <tr class="align-middle">
                     <td>Category: </td>
-                    <td>{{ $asset[0]['category']['ctgy_ast_name'] }}</td>
+                    <td>{{ $asset[0]['category']['ctgy_ast_name']??'not have' }}</td>
                 </tr>
                 <tr class="align-middle">
                   <td>Origin: </td>
-                  <td>{{ $asset[0]['origin']['ast_orgn_name'] }}</td>
+                  <td>{{ $asset[0]['origin']['ast_orgn_name']??'not have' }}</td>
                 </tr>
                 <tr class="align-middle">
                   <td>Created at: </td>
@@ -67,6 +84,39 @@
                 @empty
                 <tr>
                   <td colspan="2" class="w-100 text-center">404 | data not found</td>
+                </tr>
+                @endforelse
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+    </div>
+    <hr>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3 class="card-title">Log asset</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th style="width: 30%">status</th>
+                  <th>note</th>
+                  <th>created at</th>
+                </tr>
+              </thead>
+              <tbody>
+                @forelse ($logs as $log)
+                <tr class="align-middle">
+                  <td>{{ $log->ast_lg_status??'not have' }}</td>
+                  <td>{{ $log->ast_lg_note }}</td>
+                  <td>{{ $log->ast_lg_created_at->format('d F y') }}</td>
+                </tr>
+                @empty
+                <tr>
+                  <td colspan="3" class="w-100 text-center">404 | data not found</td>
                 </tr>
                 @endforelse
               </tbody>

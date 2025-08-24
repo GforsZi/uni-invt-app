@@ -7,7 +7,7 @@
         <x-slot:title>Manage origin asset</x-slot:title>
         <x-slot:header>
           <th style="width: 10px">#</th>
-          <th>name</th>
+          <th style="width: 100px">name</th>
           <th>description</th>
           <th style="width: 60px">option</th>
         </x-slot:header>
@@ -27,7 +27,9 @@
             </ul>
           </div>
             <div class="modal fade" id="deleteConfirmation{{$origins->firstItem() + $index}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteConfirmation{{$origins->firstItem() + $index}}Label" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
+              <form action="/asset/origin/{{ $origin->ast_orgn_id }}/delete" method="post" class="modal-dialog modal-dialog-centered">
+                @csrf
+                @method('DELETE')
                 <div class="modal-content rounded-3 shadow"> 
                 <div class="modal-body p-4 text-center"> 
                   <h5 class="mb-0">Delete this data?</h5> 
@@ -35,10 +37,10 @@
                 </div> 
                 <div class="modal-footer flex-nowrap p-0"> 
                   <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancle</button> 
-                  <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Delete</strong></button> 
+                  <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Delete</strong></button> 
                 </div> 
               </div> 
-              </div>
+              </form>
             </div> 
           </td>
         </tr>

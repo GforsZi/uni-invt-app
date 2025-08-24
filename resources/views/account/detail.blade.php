@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-    <div>
-        <div class="card mb-4">
+    <div class="row g-0 align-items-center">
+        <div class="col-12 col-md-4 d-flex justify-content-center p-3">
+            <img src="{{ asset($account[0]['usr_photo_path']??'/logo/uni_invt.png') }}" class="rounded-circle shadow object-fit-cover" alt="Profile Image" width="200" height="200">
+        </div>
+        <div class="card mb-4 col-12 col-md-8">
             <div class="card-header">
                 <h3 class="card-title">Detail account</h3>
             </div>
@@ -45,8 +48,7 @@
             </table>
             </div>
         <!-- /.card-body -->
-        </div>
-        <div class="d-flex gap-2">
+        <div class="d-flex m-2 gap-2">
         <form method="post" action="/account/{{$account[0]['usr_id']}}/activated">
             @csrf
             @method('PUT')
@@ -61,6 +63,7 @@
         </form>
         <a class="btn btn-danger"style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#deleteConfirmation{{$account[0]['usr_id']}}" >delete this account</a>
 
+        </div>
         </div>
     </div>
     <div class="modal fade" id="deleteConfirmation{{$account[0]['usr_id']}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteConfirmation{{$account[0]['usr_id']}}Label" aria-hidden="true">

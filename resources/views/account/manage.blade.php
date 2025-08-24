@@ -17,7 +17,7 @@
         <tr class="align-middle">
           <td>{{ $accounts->firstItem() + $index }}</td>
           <td>
-            <img src="{{asset($account->usr_photo_path??'logo/uni_invt.png')}}" class="user-image rounded-circle shadow" width="50" alt="User Image" />
+            <img src="{{asset($account->usr_photo_path??'logo/uni_invt.png')}}" class="rounded-circle shadow object-fit-cover" width="50" height="50" alt="User Image" />
           </td>
           <td>{{$account->name}}</td>
           <td>{{$account->roles->rl_name??'not have'}}</td>

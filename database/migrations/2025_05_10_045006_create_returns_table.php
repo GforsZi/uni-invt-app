@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('rtrn_loan_id')->unsigned()->nullable();
             $table->string('rtrn_description')->nullable();
             $table->string('rtrn_note')->nullable();
-            $table->boolean('rtrn_accepted')->default(false);
+            $table->boolean('rtrn_accepted')->nullable();
             $table->date('rtrn_approved_at')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('rtrn_created_by')->unsigned()->nullable();

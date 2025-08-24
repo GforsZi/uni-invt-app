@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\ManageCategoryAssetController;
 use App\Http\Controllers\Web\ManageDescriptionAssetController;
 use App\Http\Controllers\Web\ManageLoanController;
 use App\Http\Controllers\Web\ManageLocationController;
+use App\Http\Controllers\Web\ManageLogAssetController;
 use App\Http\Controllers\Web\ManageOriginAssetController;
 use App\Http\Controllers\Web\ManageReturnController;
 use App\Http\Controllers\Web\ManageRoleController;
@@ -100,6 +101,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/asset/add', [ManageAssetController::class, 'add_asset_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::put('/asset/{id}/edit', [ManageAssetController::class, 'update_asset_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::delete('/asset/{id}/delete', [ManageAssetController::class, 'delete_asset_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
+    Route::post('/asset/log/{id}/add', [ManageLogAssetController::class, 'add_asset_log_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/asset/log/{id}/edit', [ManageLogAssetController::class, 'update_asset_log_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::delete('/asset/log/{id}/delete', [ManageLogAssetController::class, 'delete_asset_log_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
 
     Route::post('/location/add', [ManageLocationController::class, 'add_location_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::put('/location/{id}/edit', [ManageLocationController::class, 'update_location_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');

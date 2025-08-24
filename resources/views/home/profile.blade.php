@@ -12,10 +12,7 @@
 
 
                 <div class="col-12 col-md-4 d-flex justify-content-center p-3">
-                    <img src="{{ asset('logo/uni_invt.png') }}"
-                        class="img-fluid rounded-circle"
-                        alt="Profile Image"
-                        style="max-width: 180px;">
+                    <img src="{{ asset($users['usr_photo_path']??'/logo/uni_invt.png') }}" class="rounded-circle shadow object-fit-cover" alt="Profile Image" width="200" height="200">
                 </div>
 
 
@@ -35,12 +32,12 @@
 
                         <div class="d-flex justify-content-Start gap-1 mb-2">
                             <strong>Role:</strong>
-                            <span>{{ $users['roles']['rl_name'] }}</span>
+                            <span>{{ $users['roles']['rl_name']??'not have' }}</span>
                         </div>
 
                         <div class="d-flex gap-1 justify-content-Start">
                             <strong>Description:</strong>
-                            <span>{{ $users['roles']['rl_description'] }}</span>
+                            <span>{{ $users['roles']['rl_description']??'not have' }}</span>
                         </div>
                     </div>
                 </div>

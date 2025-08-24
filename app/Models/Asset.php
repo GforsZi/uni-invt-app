@@ -48,10 +48,10 @@ class Asset extends Model
     {
         return $this->belongsToMany(
             DescriptionAsset::class,
-            'tb_asset_descriptions',
-            'ast_desc_item_id',
+            'asset_descriptions',
+            'ast_desc_asset_id',
             'ast_desc_description_id'
-        )->using(AssetDescription::class);
+        );
     }
 
     public function logs(): HasMany

@@ -13,7 +13,7 @@
         @forelse ($loans as $index => $loan)
         <tr class="align-middle">
           <td>{{$loans->firstItem() + $index}}</td>
-          <td>{{$loan->user->name}}</td>
+          <td>{{$loan->user->name??'not have'}}</td>
           <td>
             @if ($loan->ln_status)
               active
@@ -23,9 +23,9 @@
           </td>
           <td>{{$loan->ln_limit}}</td>
           <td>
-            @if ($loan->ln_accepted === true)
+            @if ($loan->ln_accepted === 1)
               accepted
-            @elseif ($loan->ln_accepted === false)
+            @elseif ($loan->ln_accepted === 0)
               rejected
             @else
               pending
