@@ -1,11 +1,16 @@
 <x-app-layout>
   <x-slot:title>{{ $title }}</x-slot:title>
   <x-slot:side_canvas>
-    <a href="" class="btn btn-primary w-100">see assets</a>
-     <a href="" class="btn btn-primary w-100">manage asset loans</a>
+    <a href="/asset/category" class="btn btn-primary w-100 mb-2">view assets</a>
   </x-slot:side_canvas>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5>Success: {{session("success")}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
   
   <div class="row">
     <div class="col-md-3 col-sm-6 col-12">

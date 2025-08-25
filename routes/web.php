@@ -36,12 +36,21 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'home_page'])->name('home')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
-
     Route::get('/dashboard', [DashboardController::class, 'dashboard_page'])->name('dashboard')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
-
     Route::get('/profile', [HomeController::class, 'profile_page'])->name('profile')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::get('/profile/edit', [HomeController::class, 'update_profile_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+
+    Route::get('/asset/category', [HomeController::class, 'view_asset_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::get('/asset/category/{id}', [HomeController::class, 'view_asset_by_category_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::get('/asset/{id}/detail', [HomeController::class, 'view_detail_asset_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+
+    Route::get('/loan/add', [HomeController::class, 'add_loan_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::get('/loan/{id}/detail', [HomeController::class, 'detail_loan_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::get('/loan/{id}/edit', [HomeController::class, 'update_loan_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::get('/return/add', [HomeController::class, 'add_return_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
 
     Route::get('/admin/profile', [DashboardController::class, 'admin_profile_page'])->name('admin_profile')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::get('/admin/profile/edit', [DashboardController::class, 'update_profile_page'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
 
     Route::get('/manage/account', [ManageAccountController::class, 'manage_account_page'])->name('manage_account')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::get('/manage/account/{id}/detail', [ManageAccountController::class, 'detail_account_page'])->name('detail_account')->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
@@ -81,9 +90,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::put('/profile/edit', [HomeController::class, 'update_profile_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::put('/admin/profile/edit', [DashboardController::class, 'update_profile_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+
     Route::post('/account/add', [ManageAccountController::class, 'add_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::put('/account/{id}/banned', [ManageAccountController::class, 'banned_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::put('/account/{id}/activated', [ManageAccountController::class, 'activated_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
+    Route::put('/account/{id}/change/role', [ManageAccountController::class, 'change_account_role_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::delete('/account/{id}/delete', [ManageAccountController::class, 'delete_account_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
 
     Route::post('/role/add', [ManageRoleController::class, 'add_role_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
@@ -116,8 +129,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/loan/{id}/rejected', [ManageLoanController::class, 'rejected_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::delete('/loan/{id}/delete', [ManageLoanController::class, 'delete_loan_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
 
-    Route::post('/return/add', [ManageReturnController::class, 'add_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
-    Route::put('/return/{id}/edit', [ManageReturnController::class, 'update_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
+    Route::post('/return/{id}/add', [ManageReturnController::class, 'add_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':0');
     Route::put('/return/{id}/accepted', [ManageReturnController::class, 'accepted_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::put('/return/{id}/rejected', [ManageReturnController::class, 'rejected_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');
     Route::delete('/return/{id}/delete', [ManageReturnController::class, 'delete_return_system'])->middleware(CheckActivation::class . ':1')->middleware(CheckRole::class . ':1');

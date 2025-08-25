@@ -179,7 +179,7 @@
                               <h5 class="mb-4">View log to asset {{ $asset->asset->ast_id }}</h5> 
                               <div class="input-group mb-3 d-block">
                                 <label class="form-label">Status</label>
-                                 <select name="ast_lg_status" class="form-select w-100" required aria-label="Default select example">
+                                 <select name="ast_lg_status" class="form-select w-100 @error('ast_lg_status') is-invalid @enderror" required aria-label="Default select example">
                                    <option value="{{ $log->ast_lg_status }}" selected>{{ $log->ast_lg_status }}</option>
                                    <option value="good" >Good</option>
                                    <option value="damage">Damage</option>
@@ -188,7 +188,7 @@
                                </div>
                               <div class="mb-3">
                                   <label class="form-label">Note</label>
-                                  <textarea class="form-control" name="ast_lg_note">{{$log->ast_lg_note}}</textarea>
+                                  <textarea class="form-control @error('ast_lg_note') is-invalid @enderror" name="ast_lg_note">{{$log->ast_lg_note}}</textarea>
                                   <input type="hidden" value="{{ $return[0]['rtrn_id'] }}" name="rtrn_id">
                                   <input type="hidden" value="{{ $log->ast_lg_id }}" name="ast_lg_id">
                               </div>
@@ -216,7 +216,7 @@
                               <h5 class="mb-4">Add log to asset {{ $asset->asset->ast_id }}</h5> 
                               <div class="input-group mb-3 d-block">
                                 <label class="form-label">Status</label>
-                                 <select name="ast_lg_status" class="form-select w-100" required aria-label="Default select example">
+                                 <select name="ast_lg_status" class="form-select w-100 @error('ast_lg_status') is-invalid @enderror" required aria-label="Default select example">
                                    <option value="good" selected>Good</option>
                                    <option value="damage">Damage</option>
                                    <option value="lost">Lost</option>
@@ -224,7 +224,7 @@
                                </div>
                               <div class="mb-3">
                                   <label class="form-label">Note</label>
-                                  <textarea class="form-control" name="ast_lg_note"></textarea>
+                                  <textarea class="form-control @error('ast_lg_note') is-invalid @enderror" name="ast_lg_note"></textarea>
                                   <input type="hidden" value="{{ $return[0]['rtrn_id'] }}" name="rtrn_id">
                                   
                               </div>
@@ -253,7 +253,7 @@
                               <h5 class="mb-4">Add log to asset {{ $asset->asset->ast_id }}</h5> 
                               <div class="input-group mb-3 d-block">
                                 <label class="form-label">Status</label>
-                                 <select name="ast_lg_status" class="form-select w-100" required aria-label="Default select example">
+                                 <select name="ast_lg_status" class="form-select w-100 @error('ast_lg_status') is-invalid @enderror" required aria-label="Default select example">
                                    <option value="good" selected>Good</option>
                                    <option value="damage">Damage</option>
                                    <option value="lost">Lost</option>
@@ -261,7 +261,7 @@
                                </div>
                               <div class="mb-3">
                                   <label class="form-label">Note</label>
-                                  <textarea class="form-control" name="ast_lg_note"></textarea>
+                                  <textarea class="form-control @error('ast_lg_note') is-invalid @enderror" name="ast_lg_note"></textarea>
                                   <input type="hidden" value="{{ $return[0]['rtrn_id'] }}" name="rtrn_id">
                               </div>
                             </div> 

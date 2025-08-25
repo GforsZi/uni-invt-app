@@ -42,26 +42,26 @@
             @method('PUT')
             <div class="mb-3">
                 <label class="form-label">Latitude</label>
-                <input type="text" id="lat-input" name="lctn_latitude" value="{{ $location[0]['lctn_latitude'] }}" class="form-control" readonly>
+                <input type="text" id="lat-input" name="lctn_latitude" value="{{ $location[0]['lctn_latitude'] }}" class="form-control @error('lctn_latitude') is-invalid @enderror" readonly>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Longitude</label>
-                <input type="text" id="lng-input" name="lctn_longitude" value="{{ $location[0]['lctn_longitude'] }}" class="form-control" readonly>
+                <input type="text" id="lng-input" name="lctn_longitude" value="{{ $location[0]['lctn_longitude'] }}" class="form-control @error('lctn_longitude') is-invalid @enderror" readonly>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Image</label>
-                <input type="file" class="form-control" name="image">
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
             </div>
             <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" class="form-control" name="lctn_name" value="{{ $location[0]['lctn_name'] }}">
+                <input type="text" class="form-control @error('lctn_name') is-invalid @enderror" name="lctn_name" value="{{ $location[0]['lctn_name'] }}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
-                <textarea name="lctn_description" class="form-control">{{ $location[0]['lctn_description'] }}</textarea>
+                <textarea name="lctn_description" class="form-control @error('lctn_description') is-invalid @enderror">{{ $location[0]['lctn_description'] }}</textarea>
             </div>
 
             <div class="form-check">

@@ -3,6 +3,12 @@
     <x-slot:side_canvas>
         <a href="/manage/role/add" class="btn btn-primary w-100">Add role</a>
     </x-slot:side_canvas>
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5>Success: {{session("success")}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     <x-table_data :data="$roles">
         <x-slot:title>Manage Role</x-slot:title>
         <x-slot:header>

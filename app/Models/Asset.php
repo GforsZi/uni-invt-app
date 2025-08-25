@@ -54,6 +54,25 @@ class Asset extends Model
         );
     }
 
+    public function loans(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Loans::class,
+            'loaning_assets',
+            'lng_ast_asset_id',
+            'lng_ast_loan_id',
+        );
+    }
+    public function returns(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Returns::class,
+            'returning_assets',
+            'rtrng_ast_asset_id',
+            'rtrng_ast_return_id',
+        );
+    }
+
     public function logs(): HasMany
     {
         return $this->hasMany(AssetLog::class, 'ast_lg_asset_id', 'ast_id');

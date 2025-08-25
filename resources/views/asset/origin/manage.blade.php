@@ -3,6 +3,12 @@
     <x-slot:side_canvas>
         <a href="/manage/asset/origin/add" class="btn btn-primary w-100">Add origin</a>
     </x-slot:side_canvas>
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5>Success: {{session("success")}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     <x-table_data :data="$origins">
         <x-slot:title>Manage origin asset</x-slot:title>
         <x-slot:header>

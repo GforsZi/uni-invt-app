@@ -1,11 +1,14 @@
 <x-app-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <x-slot:side_canvas>
-        <button type="button" class="btn btn-primary" style="width: 100%;">Edit Profile</button>
+        <a href="/profile/edit" class="btn btn-primary" style="width: 100%;">Edit Profile</a>
     </x-slot:side_canvas>
-    <!-- {{ $users }} -->
-    <!-- <p>name: {{$users['name']}}</p>
-    <p>name: {{$users['roles']['rl_name']}}</p> -->
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5>Success: {{session("success")}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     <div class="profil">
         <div class="card shadow-sm mb-3 w-100">
             <div class="row g-0 align-items-center">
@@ -45,6 +48,36 @@
             </div>
         </div>
     </div>
+    <x-table_data :data="$loans">
+      <x-slot:query>{{$search??'&category=all'}}</x-slot:query>
+        <x-slot:title>Manage asset</x-slot:title>
+        <x-slot:header>
+          <th style="width: 10px">#</th>
+          <th>status</th>
+          <th>description</th>
+          <th style="width: 60px">detail</th>
+        </x-slot:header>
+        @forelse ($loans as $index => $loan)
+        <tr class="align-middle">
+          <td>{{$loans->firstItem() + $index}}</td>
+          <td>
+            @if ($loan->ln_accepted === 1)
+                accepted
+            @elseif ($loan->ln_accepted === 0)
+                rejected
+            @else
+                pending
+            @endif
+          </td>
+          <td>{{$loan->ln_description}}</td>
+          <td><a href="/loan/{{ $loan->ln_id }}/detail" class="btn btn-warning m-0"><i class="bi bi-list-ul"></i></a></td>
+        </tr>
+        @empty
+        <tr>
+          <td colspan="5" class="w-100 text-center">404 | data not found</td>
+        </tr>
+        @endforelse
+    </x-table_data>
 
 
 </x-app-layout>

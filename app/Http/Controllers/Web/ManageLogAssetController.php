@@ -43,4 +43,10 @@ class ManageLogAssetController extends Controller
         AssetLog::where('ast_lg_id', $request->ast_lg_id)->update($validateData);
         return redirect('/manage/return/' . $request->rtrn_id . '/detail')->with('success', 'log updated');
     }
+
+    public function delete_asset_log_system(Request $request, $id)
+    {
+        AssetLog::find($id)->delete();
+        return redirect('/manage/asset/' . $request->detail_asset_id . '/detail')->with('success', 'log deleted');
+    }
 }

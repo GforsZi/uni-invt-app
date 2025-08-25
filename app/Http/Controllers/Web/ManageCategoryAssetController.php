@@ -30,7 +30,7 @@ class ManageCategoryAssetController extends Controller
     {
         $validateData = $request->validate([
             "ctgy_ast_name" => "required | min:3 | max:255",
-            "ctgy_ast_description" => "string | max:255",
+            "ctgy_ast_description" => "nullable | string | max:255",
             'image' => 'nullable|image|max:2048',
         ]);
 

@@ -10,11 +10,11 @@
         @csrf
         @method('PUT')
       <div class="input-group mb-3">
-        <input type="text" class="form-control" name="ast_codename" value="{{ $asset[0]['ast_codename'] }}" required placeholder="codename" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control @error('ast_codename') is-invalid @enderror" name="ast_codename" value="{{ $asset[0]['ast_codename'] }}" required placeholder="codename" aria-label="Username" aria-describedby="basic-addon1">
         <button type="button" class="btn btn-secondary">generate</button>
         </div>
         <div class="input-group mb-3">
-          <select name="ast_category_id" class="form-select" required aria-label="Default select example">
+          <select name="ast_category_id" class="form-select @error('ast_category_id') is-invalid @enderror" required aria-label="Default select example">
             <option value="{{ $asset[0]['category']['ctgy_ast_id']??'' }}" selected>{{ $asset[0]['category']['ctgy_ast_name']??'not have' }}</option>
             @foreach ($categories as $category)
             <option value="{{ $category->ctgy_ast_id }}">{{ $category->ctgy_ast_name }}</option>
@@ -22,7 +22,7 @@
           </select>
         </div>
         <div class="input-group mb-3">
-          <select name="ast_origin_id" class="form-select" aria-label="Default select example">
+          <select name="ast_origin_id" class="form-select @error('ast_origin_id') is-invalid @enderror" aria-label="Default select example">
             <option value="{{ $asset[0]['origin']['ast_orgn_id']??'' }}" selected>{{ $asset[0]['origin']['ast_orgn_name']??'not have' }}</option>
             @foreach ($origins as $origin)
             <option value="{{ $origin->ast_orgn_id }}">{{ $origin->ast_orgn_name }}</option>
@@ -30,7 +30,7 @@
           </select>
         </div>
         <div class="input-group mb-3">
-          <select name="rltn_ast_location_id" class="form-select" aria-label="Default select example">
+          <select name="rltn_ast_location_id" class="form-select @error('rltn_ast_location_id') is-invalid @enderror" aria-label="Default select example">
             <option value="{{ $relations[0]['location']['lctn_id']??''  }}" selected>{{ $relations[0]['location']['lctn_name']??'not have' }}</option>
             @foreach ($locations as $location)
             <option value="{{ $location->lctn_id }}">{{ $location->lctn_name }}</option>
@@ -40,14 +40,14 @@
         <div class="input-group mb-3" id="descriptions-wrapper">
             @foreach ($descriptions as $index => $description)                
             <div class="input-group mb-2 description-row"  >
-                <input type="text" value="{{ $description->description->desc_ast_description }}" name="descriptions[{{ $index }}][title]"  class="form-control" placeholder="title">
-                <input type="text" value="{{ $description->description->desc_ast_value }}" name="descriptions[{{ $index }}][value]"class="form-control" placeholder="value">
+                <input type="text" value="{{ $description->description->desc_ast_description }}" name="descriptions[{{ $index }}][title]"  class="form-control @error('description[{{ $index }}][title]') is-invalid @enderror" placeholder="title">
+                <input type="text" value="{{ $description->description->desc_ast_value }}" name="descriptions[{{ $index }}][value]"class="form-control @error('description[{{ $index }}][value]') is-invalid @enderror" placeholder="value">
                 <button type="button" class="btn btn-danger remove-description">-</button>
             </div>
             @endforeach
             <div class="input-group mb-2"  id="oldDiv">
-                <input type="text" name="descriptions[{{ $descriptions->count() }}][title]"  class="form-control" placeholder="title">
-                <input type="text" name="descriptions[{{ $descriptions->count() }}][value]"class="form-control" placeholder="value">
+                <input type="text" name="descriptions[{{ $descriptions->count() }}][title]"  class="form-control @error('description[{{ $descriptions->count() }}][title]') is-invalid @enderror" placeholder="title">
+                <input type="text" name="descriptions[{{ $descriptions->count() }}][value]"class="form-control @error('description[{{ $descriptions }}][value]') is-invalid @enderror" placeholder="value">
                 <button type="button" class="btn btn-success  add-description">+</button>
             </div>
         </div>
@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
             newRow.classList.add('input-group', 'description-row');
             newRow.innerHTML = `
             <div class="input-group mb-2"  >
-                <input type="text" name="descriptions[${index}][title]"  class="form-control" placeholder="title">
-                <input type="text" name="descriptions[${index}][value]"class="form-control" placeholder="value">
+                <input type="text" name="descriptions[${index}][title]"  class="form-control @error('description[${index}][title]') is-invalid @enderror" placeholder="title">
+                <input type="text" name="descriptions[${index}][value]"class="form-control @error('description[${index}][value]') is-invalid @enderror" placeholder="value">
                 <button type="button" class="btn btn-danger remove-description">-</button>
             </div>
             `;

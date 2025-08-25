@@ -3,6 +3,12 @@
      <x-slot:side_canvas>
         <a href="/manage/asset/category/add" class="btn btn-primary w-100">add category</a>
     </x-slot:side_canvas>
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5>Success: {{session("success")}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     <x-table_data :data="$categories">
         <x-slot:title>Manage category asset</x-slot:title>
         <x-slot:header>
@@ -16,7 +22,7 @@
         <tr class="align-middle">
           <td>{{$categories->firstItem() + $index}}</td>
           <td>
-            <img src="{{asset($category->ctgy_ast_img_path??'logo/uni_invt.png')}}" class="user-image rounded-circle shadow" width="50" alt="User Image" />
+            <img src="{{asset($category->ctgy_ast_img_path??'logo/uni_invt.png')}}" class="user-image rounded-circle shadow object-fit-cover" height="50" width="50" alt="User Image" />
           </td>
           <td>{{$category->ctgy_ast_name}}</td>
           <td>{{$category->ctgy_ast_description}}</td>

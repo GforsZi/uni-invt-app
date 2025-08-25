@@ -12,11 +12,11 @@
           <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-              <input type="text" name="ast_orgn_name" class="form-control" id="inputEmail3">
+              <input type="text" name="ast_orgn_name" class="form-control @error('ast_orgn_name') is-invalid @enderror" id="inputEmail3">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" name="ast_orgn_description" class="col-sm-2 col-form-label">Description</label>
+            <label for="inputPassword3" name="ast_orgn_description" class="col-sm-2 col-form-label @error('ast_orgn_description') is-invalid @enderror">Description</label>
             <div class="col-sm-10">
               <textarea class="form-control"></textarea>
             </div>

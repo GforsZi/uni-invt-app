@@ -37,27 +37,27 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Latitude</label>
-                <input type="text" id="lat-input" class="form-control" readonly name="lctn_latitude">
+                <input type="text" id="lat-input" class="form-control @error('lctn_latitude') is-invalid @enderror" readonly name="lctn_latitude">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Longitude</label>
-                <input type="text" id="lng-input" class="form-control" readonly name="lctn_longitude">
+                <input type="text" id="lng-input" class="form-control @error('lctn_longitude') is-invalid @enderror" readonly name="lctn_longitude">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Image</label>
-                <input type="file" name="image" class="form-control" >
+                <input type="file " name="image" class="form-control @error('image') is-invalid @enderror" >
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" class="form-control" value="" name="lctn_name">
+                <input type="text" class="form-control @error('lctn_name') is-invalid @enderror" value="" name="lctn_name">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
-                <textarea class="form-control" name="lctn_description"></textarea>
+                <textarea class="form-control @error('lctn_description') is-invalid @enderror" name="lctn_description"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,8 +1,14 @@
 <x-app-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <x-slot:side_canvas>
-        <button type="button" class="btn btn-primary" style="width: 100%;">Edit Profile</button>
+        <a href='/admin/profile/edit' class="btn btn-primary" style="width: 100%;">Edit Profile</a>
     </x-slot:side_canvas>
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5>Success: {{session("success")}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     <div class="profil">
         <div class="card shadow-sm mb-3 w-100">
             <div class="row g-0 align-items-center">

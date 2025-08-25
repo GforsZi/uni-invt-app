@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('assets', function (Blueprint $table) {
             $table->bigIncrements('ast_id');
             $table->string('ast_codename')->nullable();
+            $table->boolean('ast_available')->default(true);
             $table->unsignedBigInteger('ast_category_id')->unsigned()->nullable();
             $table->unsignedBigInteger('ast_origin_id')->unsigned()->nullable();
             $table->timestamps();

@@ -13,13 +13,13 @@
           <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="rl_name" value="{{ $role[0]['rl_name'] }}" id="inputEmail3">
+              <input type="text" class="form-control @error('rl_name') is-invalid @enderror" name="rl_name" value="{{ $role[0]['rl_name'] }}" id="inputEmail3">
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-10">
-              <textarea name="rl_description" class="form-control">{{ $role[0]['rl_description'] }}</textarea>
+              <textarea name="rl_description" class="form-control @error('rl_description') is-invalid @enderror">{{ $role[0]['rl_description'] }}</textarea>
             </div>
           </div>
           </fieldset>

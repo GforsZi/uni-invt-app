@@ -151,7 +151,7 @@ class ManageAssetController extends Controller
             ]);
         }
 
-        return redirect('/manage/asset?category=all')->with('success', 'asset created');
+        return redirect('/manage/asset/' . $id . '/detail')->with('success', 'asset created');
     }
 
     public function delete_asset_system($id)

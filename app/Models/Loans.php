@@ -6,6 +6,7 @@ use App\Traits\Blameable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -27,9 +28,14 @@ class Loans extends Model
         return $this->belongsTo(User::class, 'ln_user_id', 'usr_id');
     }
 
-    public function loaningAssets(): HasMany
+    public function assets(): BelongsToMany
     {
-        return $this->hasMany(LoaningAsset::class, 'lng_ast_loan_id', 'ln_id');
+        return $this->belongsToMany(
+            Asset::class,
+            'loaning_assets',
+            'lng_ast_loan_id',
+            'lng_ast_asset_id',
+        );
     }
 
     public function loanLocations(): HasMany

@@ -1,4 +1,4 @@
 <x-app-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-    {{ $account }}              
+    {{ $account }}
 </x-app-layout>

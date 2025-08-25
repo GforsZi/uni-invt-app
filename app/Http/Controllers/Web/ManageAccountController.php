@@ -20,7 +20,8 @@ class ManageAccountController extends Controller
     public function detail_account_page(Request $request, $id)
     {
         $account = User::where('usr_id', $id)->with('roles')->get();
-        return view('account.detail', ['title' => 'detail account page', 'account' => $account]);
+        $role = Role::get();
+        return view('account.detail', ['title' => 'detail account page', 'account' => $account, 'roles' => $role]);
     }
 
     public function add_account_page()
@@ -91,6 +92,7 @@ class ManageAccountController extends Controller
         $user->update($validateData);
         return redirect("/manage/account/" . $id . "/detail")->with("success", "account banned");
     }
+
     public function activated_account_system(Request $request, $id)
     {
         $user = User::find($id);
@@ -101,6 +103,18 @@ class ManageAccountController extends Controller
 
         $user->update($validateData);
         return redirect("/manage/account/" . $id . "/detail")->with("success", "account activated");
+    }
+
+    public function change_account_role_system(Request $request, $id)
+    {
+        $account = User::find($id);
+
+        $validateData = $request->validate([
+            'usr_role_id' => 'sometimes | required | exists:roles,rl_id',
+        ]);
+
+        $account->update($validateData);
+        return redirect("/manage/account/" . $id . "/detail")->with("success", "role changed");
     }
 
     public function delete_account_system(Request $request, $id)
