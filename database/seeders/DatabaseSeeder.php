@@ -62,6 +62,7 @@ class DatabaseSeeder extends Seeder
         // Seed Assets
         for ($i = 0; $i < 10; $i++) {
             DB::table('assets')->insert([
+                'ast_codename' => $faker->word(),
                 'ast_category_id' => $faker->numberBetween(1, 10),
                 'ast_origin_id'   => $faker->numberBetween(1, 10),
                 'ast_created_by'  => $faker->numberBetween(1, 10),
