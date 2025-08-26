@@ -93,7 +93,7 @@ class ManageLoanController extends Controller
                         'lng_ast_asset_id' => $ast,
                     ]);
 
-                    $loan->assets()->attach($asset->lng_ast_id);
+                    $loan->assets()->attach($asset->lng_ast_asset_id);
                     $assetAvb = Asset::find($ast)->update(['ast_available' => false]);
                 }
             }

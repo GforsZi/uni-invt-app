@@ -16,9 +16,9 @@
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" name="ast_orgn_description" class="col-sm-2 col-form-label @error('ast_orgn_description') is-invalid @enderror">Description</label>
+            <label for="inputPassword3" class="col-sm-2 col-form-label @error('ast_orgn_description') is-invalid @enderror">Description</label>
             <div class="col-sm-10">
-              <textarea class="form-control"></textarea>
+              <textarea name="ast_orgn_description"  class="form-control"></textarea>
             </div>
           </div>
           </fieldset>

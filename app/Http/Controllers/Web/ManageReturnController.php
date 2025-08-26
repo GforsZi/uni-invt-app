@@ -53,7 +53,7 @@ class ManageReturnController extends Controller
                         'rtrng_ast_asset_id' => $ast,
                     ]);
 
-                    $return->assets()->attach($asset->rtrng_ast_id);
+                    $return->assets()->attach($asset->rtrng_ast_asset_id);
                     $assetAvb = Asset::find($ast)->update(['ast_available' => true]);
                 }
             }

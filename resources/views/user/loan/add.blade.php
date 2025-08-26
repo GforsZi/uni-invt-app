@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             newRow.innerHTML = `
             <div class="input-group mb-2"  >
           <select name="asset_id[${ index }]" name="rltn_ast_location_id" class="form-select @error('asset_id[${ index }]') is-invalid @enderror" aria-label="Default select example">
-            <option value="null" selected>select location</option>
+            <option value="null" selected>select asset</option>
             @foreach ($assets as $asset)
             @if ($asset->ast_available === 1)
             <option value="{{ $asset->ast_id }}">{{ $asset->ast_codename??'not have' }}</option>

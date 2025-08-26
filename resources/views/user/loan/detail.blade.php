@@ -4,7 +4,7 @@
         <a href="/loan/{{$loan[0]['ln_id']}}/edit" class="btn btn-warning w-100">Edit loan</a>
     </x-slot:side_canvas>
     <x-slot:header_layout>
-      @if ($loan[0]['ln_status'] === true ?? $loan[0]['ln_accepted'] === true)
+      @if ($loan[0]['ln_accepted'] === 1 ?? $loan[0]['ln_status'] === 1)
           
       <a class="btn btn-danger w-100 mb-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#return{{$loan[0]['ln_id']}}" >Return this loan</a>
       <div class="modal fade" id="return{{$loan[0]['ln_id']}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="return{{$loan[0]['ln_id']}}Label" aria-hidden="true">
@@ -32,7 +32,7 @@
                 </div> 
                 <div class="modal-footer flex-nowrap p-0"> 
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancle</button> 
-                    <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Delete</strong></button> 
+                    <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" ><strong>Submit</strong></button> 
                 </div> 
             </div> 
         </form>
@@ -76,7 +76,7 @@
                 </tr>
                 <tr class="align-middle">
                     <td>Description: </td>
-                    <td>{{ $loan[0]['ln_descrription'] }}</td>
+                    <td>{{ $loan[0]['ln_description'] }}</td>
                 </tr>
                 <tr class="align-middle">
                   <td>Status: </td>

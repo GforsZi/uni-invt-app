@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('loans')->insert([
                 'ln_user_id'   => $faker->numberBetween(1, 10),
-                'ln_loan_limit'      => $faker->dateTimeThisYear(),
+                'ln_loan_limit'      => null,
                 'ln_created_at'   => now(),
                 'ln_updated_at'   => now(),
             ]);

@@ -34,7 +34,7 @@
                 </tr>
                 <tr class="align-middle">
                     <td>Description: </td>
-                    <td>{{ $loan[0]['ln_descrription'] }}</td>
+                    <td>{{ $loan[0]['ln_description'] }}</td>
                 </tr>
                 <tr class="align-middle">
                   <td>Status: </td>

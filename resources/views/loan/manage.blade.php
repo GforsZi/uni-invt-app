@@ -27,7 +27,14 @@
               not active
             @endif
           </td>
-          <td>{{$loan->ln_limit}}</td>
+          <td>
+            
+            @if ($loan->ln_loan_limit === null)
+            not have
+            @else
+            {{$loan->ln_loan_limit}}
+            @endif
+          </td>
           <td>
             @if ($loan->ln_accepted === 1)
               accepted
